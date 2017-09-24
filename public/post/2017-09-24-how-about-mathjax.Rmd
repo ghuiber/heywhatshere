@@ -1,0 +1,45 @@
+---
+title: How about MathJax?
+author: Gabi Huiber
+date: '2017-09-24'
+slug: how-about-mathjax
+categories: []
+tags: []
+---
+
+The default Lithium theme in blogdown comes with MathJax support. This big Sigma here -- $\Sigma$ -- will show like the Greek upper case Sigma if you have it and as dollar sign, backslash, Sigma, dollar sign if you don't.
+
+This seems driven by a script called `math-code.js` here:
+
+```{r showMathCode}
+library('here')
+dir(file.path(here(), 'themes/hugo-lithium-theme/static/js'))
+dir(file.path(here(), 'themes/ghostwriter/static/js'))
+dir(file.path(here(), 'themes/minimal/static'))
+```
+So, it seems like I could just copy this script to Ghostwriter's `static/js` folder, and copy the whole `js` folder to Minimal's `static` folder, like so (at the command line):
+
+```
+cp themes/hugo-lithium-theme/static/js/math-code.js themes/ghostwriter/static/js/
+cp -R themes/hugo-lithium-theme/static/js themes/minimal/static/
+```
+
+In addition, I'll have to edit the other themes' respective `config.toml` files with some extra parameters, so I will first make sure that the originals are preserved:
+
+```
+cp themes/ghostwriter/exampleSite/config.toml themes/ghostwriter/exampleSite/config_example.toml
+cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_example.toml
+```
+
+Then I'll copy over this section of the `[params]` block from the Lithium `config.toml` file to the `[params]` block in each of the other themes' own `config.toml` file. If this screws anything up, I'll just revert to the `config_example.toml` that I saved:
+
+```
+    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = "9.11.0"
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsLang = ["r", "yaml"]
+    highlightjsTheme = "github"
+
+    MathJaxCDN = "//cdn.bootcss.com"
+    MathJaxVersion = "2.7.1"
+```

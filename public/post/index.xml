@@ -23,6 +23,17 @@ diff config.toml themes/hugo-lithium-theme/exampleSite/config.toml  So if you&am
     </item>
     
     <item>
+      <title>How about MathJax?</title>
+      <link>/2017/09/24/2017-09-24-how-about-mathjax/</link>
+      <pubDate>Sun, 24 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/09/24/2017-09-24-how-about-mathjax/</guid>
+      <description>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – \(\Sigma\) – will show like the Greek upper case Sigma if you have it and as dollar sign, backslash, Sigma, dollar sign if you don’t.
+This seems driven by a script called math-code.js here:
+library(&amp;#39;here&amp;#39;) ## here() starts at /Users/ghuiber/heywhatshere dir(file.path(here(), &amp;#39;themes/hugo-lithium-theme/static/js&amp;#39;)) ## [1] &amp;quot;math-code.js&amp;quot; dir(file.path(here(), &amp;#39;themes/ghostwriter/static/js&amp;#39;)) ## [1] &amp;quot;jquery-1.11.3.min.js&amp;quot; &amp;quot;jquery.fitvids.js&amp;quot; &amp;quot;math-code.js&amp;quot; ## [4] &amp;quot;scripts.js&amp;quot; dir(file.</description>
+    </item>
+    
+    <item>
       <title>A Plain Markdown Post</title>
       <link>/2016/12/30/2016-12-30-hello-markdown/</link>
       <pubDate>Fri, 30 Dec 2016 21:49:57 -0700</pubDate>

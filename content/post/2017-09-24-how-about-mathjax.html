@@ -1,0 +1,37 @@
+---
+title: How about MathJax?
+author: Gabi Huiber
+date: '2017-09-24'
+slug: how-about-mathjax
+categories: []
+tags: []
+---
+
+
+
+<p>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – <span class="math inline">\(\Sigma\)</span> – will show like the Greek upper case Sigma if you have it and as dollar sign, backslash, Sigma, dollar sign if you don’t.</p>
+<p>This seems driven by a script called <code>math-code.js</code> here:</p>
+<pre class="r"><code>library(&#39;here&#39;)</code></pre>
+<pre><code>## here() starts at /Users/ghuiber/heywhatshere</code></pre>
+<pre class="r"><code>dir(file.path(here(), &#39;themes/hugo-lithium-theme/static/js&#39;))</code></pre>
+<pre><code>## [1] &quot;math-code.js&quot;</code></pre>
+<pre class="r"><code>dir(file.path(here(), &#39;themes/ghostwriter/static/js&#39;))</code></pre>
+<pre><code>## [1] &quot;jquery-1.11.3.min.js&quot; &quot;jquery.fitvids.js&quot;    &quot;math-code.js&quot;        
+## [4] &quot;scripts.js&quot;</code></pre>
+<pre class="r"><code>dir(file.path(here(), &#39;themes/minimal/static&#39;))</code></pre>
+<pre><code>## [1] &quot;css&quot; &quot;js&quot;</code></pre>
+<p>So, it seems like I could just copy this script to Ghostwriter’s <code>static/js</code> folder, and copy the whole <code>js</code> folder to Minimal’s <code>static</code> folder, like so (at the command line):</p>
+<pre><code>cp themes/hugo-lithium-theme/static/js/math-code.js themes/ghostwriter/static/js/
+cp -R themes/hugo-lithium-theme/static/js themes/minimal/static/</code></pre>
+<p>In addition, I’ll have to edit the other themes’ respective <code>config.toml</code> files with some extra parameters, so I will first make sure that the originals are preserved:</p>
+<pre><code>cp themes/ghostwriter/exampleSite/config.toml themes/ghostwriter/exampleSite/config_example.toml
+cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_example.toml</code></pre>
+<p>Then I’ll copy over this section of the <code>[params]</code> block from the Lithium <code>config.toml</code> file to the <code>[params]</code> block in each of the other themes’ own <code>config.toml</code> file. If this screws anything up, I’ll just revert to the <code>config_example.toml</code> that I saved:</p>
+<pre><code>    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = &quot;9.11.0&quot;
+    highlightjsCDN = &quot;//cdn.bootcss.com&quot;
+    highlightjsLang = [&quot;r&quot;, &quot;yaml&quot;]
+    highlightjsTheme = &quot;github&quot;
+
+    MathJaxCDN = &quot;//cdn.bootcss.com&quot;
+    MathJaxVersion = &quot;2.7.1&quot;</code></pre>

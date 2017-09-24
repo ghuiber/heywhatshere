@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.27.1" />
+
+
+<title>How I got started with blogdown - A Hugo website</title>
+<meta property="og:title" content="How I got started with blogdown - A Hugo website">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">How I got started with blogdown</h1>
+
+    
+    <span class="article-date">2017/09/24</span>
+    
+
+    <div class="article-content">
+      <p>The first thing to notice after you follow <a href="https://bookdown.org/yihui/blogdown/a-quick-example.html">Yihui&rsquo;s instructions</a> from the beginning to section 1.2 is that the generic <code>config.toml</code> is the same as the one in <code>exampleSite</code>. You can do that in the Bash shell with <code>diff</code>, which returns nothing if the two files are identical:</p>
+
+<pre><code>diff config.toml themes/hugo-lithium-theme/exampleSite/config.toml
+</code></pre>
+
+<p>So if you&rsquo;re going to experiment with different themes, it&rsquo;s probably best to do it now before you go down too deep into modifying <code>config.toml</code> to suit your needs. The cleanest way to adopt new themes, it seems to me, is to follow the recipe from <a href="https://github.com/calintat/minimal">Minimal</a> everywhere: add each new theme as a Git submodule. This way you can update a theme easily as soon as the author tinkers with it. This works as shown for any theme that comes from GitHub, as far as I can tell. I used this recipe for <a href="https://github.com/jbub/ghostwriter">Ghostwriter</a> and <a href="https://github.com/mismith0227/hugo_theme_pickles">Pickles</a>.</p>
+
+<p>That this Git module business works doesn&rsquo;t mean that the theme suits blogdown: Ghostwriter does, but Pickles does not. So, nevermind. You can remove a Git submodule using instructions <a href="https://stackoverflow.com/questions/1260748/how-do-i-remove-a-submodule">here</a>.</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

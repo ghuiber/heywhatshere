@@ -3,19 +3,21 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>How I got started with blogdown &middot; My Name</title>
-        <meta name="description" content="The first thing to notice after you follow Yihui&rsquo;s instructions from the beginning to section 1.2 is that the generic config.toml is the same as the one in exampleSite. You can do that in the Bash shell with diff, which returns nothing if the two files are identical:
-diff config.toml themes/hugo-lithium-theme/exampleSite/config.toml  So if you&rsquo;re going to experiment with different themes, it&rsquo;s probably best to do it now before you go down too deep into modifying config.">
+        <title>How about MathJax? &middot; My Name</title>
+        <meta name="description" content="The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – \(\Sigma\) – will show like the Greek upper case Sigma if you have it and as dollar sign, backslash, Sigma, dollar sign if you don’t.
+This seems driven by a script called math-code.js here:
+library(&#39;here&#39;) ## here() starts at /Users/ghuiber/heywhatshere dir(file.path(here(), &#39;themes/hugo-lithium-theme/static/js&#39;)) ## [1] &quot;math-code.js&quot; dir(file.path(here(), &#39;themes/ghostwriter/static/js&#39;)) ## [1] &quot;jquery-1.11.3.min.js&quot; &quot;jquery.fitvids.js&quot; &quot;math-code.js&quot; ## [4] &quot;scripts.js&quot; dir(file.">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="generator" content="Hugo 0.27.1" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="How I got started with blogdown">
-<meta property="og:description" content="The first thing to notice after you follow Yihui&rsquo;s instructions from the beginning to section 1.2 is that the generic config.toml is the same as the one in exampleSite. You can do that in the Bash shell with diff, which returns nothing if the two files are identical:
-diff config.toml themes/hugo-lithium-theme/exampleSite/config.toml  So if you&rsquo;re going to experiment with different themes, it&rsquo;s probably best to do it now before you go down too deep into modifying config.">
+        <meta property="og:title" content="How about MathJax?">
+<meta property="og:description" content="The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – \(\Sigma\) – will show like the Greek upper case Sigma if you have it and as dollar sign, backslash, Sigma, dollar sign if you don’t.
+This seems driven by a script called math-code.js here:
+library(&#39;here&#39;) ## here() starts at /Users/ghuiber/heywhatshere dir(file.path(here(), &#39;themes/hugo-lithium-theme/static/js&#39;)) ## [1] &quot;math-code.js&quot; dir(file.path(here(), &#39;themes/ghostwriter/static/js&#39;)) ## [1] &quot;jquery-1.11.3.min.js&quot; &quot;jquery.fitvids.js&quot; &quot;math-code.js&quot; ## [4] &quot;scripts.js&quot; dir(file.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/2017/09/24/2017-09-24-how-i-got-started-with-blogdown/">
+<meta property="og:url" content="/2017/09/24/2017-09-24-how-about-mathjax/">
         <link rel="stylesheet" href="/dist/styles.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -109,7 +111,7 @@ ga('send', 'pageview');
 <div class="container">
     <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
         <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">How I got started with blogdown</h1>
+    <h1 class="post-title" itemprop="name headline">How about MathJax?</h1>
     
     <p class="post-date">
         <span>Published <time datetime="2017-09-24" itemprop="datePublished">Sun, Sep 24, 2017</time></span>
@@ -125,14 +127,32 @@ ga('send', 'pageview');
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <p>The first thing to notice after you follow <a href="https://bookdown.org/yihui/blogdown/a-quick-example.html">Yihui&rsquo;s instructions</a> from the beginning to section 1.2 is that the generic <code>config.toml</code> is the same as the one in <code>exampleSite</code>. You can do that in the Bash shell with <code>diff</code>, which returns nothing if the two files are identical:</p>
+    <p>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – <span class="math inline">\(\Sigma\)</span> – will show like the Greek upper case Sigma if you have it and as dollar sign, backslash, Sigma, dollar sign if you don’t.</p>
+<p>This seems driven by a script called <code>math-code.js</code> here:</p>
+<pre class="r"><code>library(&#39;here&#39;)</code></pre>
+<pre><code>## here() starts at /Users/ghuiber/heywhatshere</code></pre>
+<pre class="r"><code>dir(file.path(here(), &#39;themes/hugo-lithium-theme/static/js&#39;))</code></pre>
+<pre><code>## [1] &quot;math-code.js&quot;</code></pre>
+<pre class="r"><code>dir(file.path(here(), &#39;themes/ghostwriter/static/js&#39;))</code></pre>
+<pre><code>## [1] &quot;jquery-1.11.3.min.js&quot; &quot;jquery.fitvids.js&quot;    &quot;math-code.js&quot;        
+## [4] &quot;scripts.js&quot;</code></pre>
+<pre class="r"><code>dir(file.path(here(), &#39;themes/minimal/static&#39;))</code></pre>
+<pre><code>## [1] &quot;css&quot; &quot;js&quot;</code></pre>
+<p>So, it seems like I could just copy this script to Ghostwriter’s <code>static/js</code> folder, and copy the whole <code>js</code> folder to Minimal’s <code>static</code> folder, like so (at the command line):</p>
+<pre><code>cp themes/hugo-lithium-theme/static/js/math-code.js themes/ghostwriter/static/js/
+cp -R themes/hugo-lithium-theme/static/js themes/minimal/static/</code></pre>
+<p>In addition, I’ll have to edit the other themes’ respective <code>config.toml</code> files with some extra parameters, so I will first make sure that the originals are preserved:</p>
+<pre><code>cp themes/ghostwriter/exampleSite/config.toml themes/ghostwriter/exampleSite/config_example.toml
+cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_example.toml</code></pre>
+<p>Then I’ll copy over this section of the <code>[params]</code> block from the Lithium <code>config.toml</code> file to the <code>[params]</code> block in each of the other themes’ own <code>config.toml</code> file. If this screws anything up, I’ll just revert to the <code>config_example.toml</code> that I saved:</p>
+<pre><code>    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = &quot;9.11.0&quot;
+    highlightjsCDN = &quot;//cdn.bootcss.com&quot;
+    highlightjsLang = [&quot;r&quot;, &quot;yaml&quot;]
+    highlightjsTheme = &quot;github&quot;
 
-<pre><code>diff config.toml themes/hugo-lithium-theme/exampleSite/config.toml
-</code></pre>
-
-<p>So if you&rsquo;re going to experiment with different themes, it&rsquo;s probably best to do it now before you go down too deep into modifying <code>config.toml</code> to suit your needs. The cleanest way to adopt new themes, it seems to me, is to follow the recipe from <a href="https://github.com/calintat/minimal">Minimal</a> everywhere: add each new theme as a Git submodule. This way you can update a theme easily as soon as the author tinkers with it. This works as shown for any theme that comes from GitHub, as far as I can tell. I used this recipe for <a href="https://github.com/jbub/ghostwriter">Ghostwriter</a> and <a href="https://github.com/mismith0227/hugo_theme_pickles">Pickles</a>.</p>
-
-<p>That this Git module business works doesn&rsquo;t mean that the theme suits blogdown: Ghostwriter does, but Pickles does not. So, nevermind. You can remove a Git submodule using instructions <a href="https://stackoverflow.com/questions/1260748/how-do-i-remove-a-submodule">here</a>.</p>
+    MathJaxCDN = &quot;//cdn.bootcss.com&quot;
+    MathJaxVersion = &quot;2.7.1&quot;</code></pre>
 
 </div>
 
@@ -141,7 +161,7 @@ ga('send', 'pageview');
 
     <div class="share">
         
-            <a class="icon-twitter" href="https://twitter.com/share?text=How%20I%20got%20started%20with%20blogdown&url=%2f2017%2f09%2f24%2f2017-09-24-how-i-got-started-with-blogdown%2f"
+            <a class="icon-twitter" href="https://twitter.com/share?text=How%20about%20MathJax%3f&url=%2f2017%2f09%2f24%2f2017-09-24-how-about-mathjax%2f"
                 onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fa fa-twitter"></i>
                 <span class="hidden">Twitter</span>
@@ -149,7 +169,7 @@ ga('send', 'pageview');
         
 
         
-            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2017%2f09%2f24%2f2017-09-24-how-i-got-started-with-blogdown%2f"
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2017%2f09%2f24%2f2017-09-24-how-about-mathjax%2f"
                 onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                 <i class="fa fa-facebook"></i>
                 <span class="hidden">Facebook</span>
@@ -157,7 +177,7 @@ ga('send', 'pageview');
         
 
         
-            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2017%2f09%2f24%2f2017-09-24-how-i-got-started-with-blogdown%2f"
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2017%2f09%2f24%2f2017-09-24-how-about-mathjax%2f"
               onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
               <i class="fa fa-google-plus"></i>
                 <span class="hidden">Google+</span>

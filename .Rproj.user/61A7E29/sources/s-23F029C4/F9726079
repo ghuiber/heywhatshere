@@ -7,13 +7,13 @@
     "folds" : "",
     "hash" : "0",
     "id" : "F9726079",
-    "lastKnownWriteTime" : 1506285368,
-    "last_content_update" : 1506285368,
+    "lastKnownWriteTime" : 1506291880,
+    "last_content_update" : 1506291880,
     "path" : "~/heywhatshere/config.toml",
     "project_path" : "config.toml",
     "properties" : {
-        "cursorPosition" : "3,16",
-        "scrollLine" : "0"
+        "cursorPosition" : "24,0",
+        "scrollLine" : "16"
     },
     "relative_order" : 1,
     "source_on_save" : false,
