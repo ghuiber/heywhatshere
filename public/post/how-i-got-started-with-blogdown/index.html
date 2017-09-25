@@ -141,7 +141,9 @@
 </div>
 
 
-    <br> <div class="text-justify"><p>The first thing to notice after you follow <a href="https://bookdown.org/yihui/blogdown/a-quick-example.html">Yihui&rsquo;s instructions</a> from the beginning to section 1.2 is that the generic <code>config.toml</code> is the same as the one in <code>exampleSite</code>. You can do that in the Bash shell with <code>diff</code>, which returns nothing if the two files are identical:</p>
+    <br> <div class="text-justify">
+
+<p>The first thing to notice after you follow <a href="https://bookdown.org/yihui/blogdown/a-quick-example.html">Yihui&rsquo;s instructions</a> from the beginning to section 1.2 is that the generic <code>config.toml</code> is the same as the one in <code>exampleSite</code>. You can do that in the Bash shell with <code>diff</code>, which returns nothing if the two files are identical:</p>
 
 <pre><code>diff config.toml themes/hugo-lithium-theme/exampleSite/config.toml
 </code></pre>
@@ -149,6 +151,29 @@
 <p>So if you&rsquo;re going to experiment with different themes, it&rsquo;s probably best to do it now before you go down too deep into modifying <code>config.toml</code> to suit your needs. The cleanest way to adopt new themes, it seems to me, is to follow the recipe from <a href="https://github.com/calintat/minimal">Minimal</a> everywhere: add each new theme as a Git submodule. This way you can update a theme easily as soon as the author tinkers with it. This works as shown for any theme that comes from GitHub, as far as I can tell. I used this recipe for <a href="https://github.com/jbub/ghostwriter">Ghostwriter</a> and <a href="https://github.com/mismith0227/hugo_theme_pickles">Pickles</a>.</p>
 
 <p>That this Git module business works doesn&rsquo;t mean that the theme suits blogdown: Ghostwriter does, but Pickles does not. So, nevermind. You can remove a Git submodule using instructions <a href="https://stackoverflow.com/questions/1260748/how-do-i-remove-a-submodule">here</a>.</p>
+
+<h2 id="update-about-submodules">Update about submodules</h2>
+
+<p>My Ghostwriter and Minimal submodules came with https remotes set to their original GitHub repos. That&rsquo;s not helpful if I&rsquo;m going to make changes to them and I want those changes preserved somewhere, I don&rsquo;t think. So, I forked first both of those repos, set the remote to my fork, and set the upstream to the original. Here&rsquo;s the setup:</p>
+
+<pre><code>Gabis-New-MacBook-Pro:heywhatshere ghuiber$ git remote -v
+origin	git@github.com:ghuiber/heywhatshere.git (fetch)
+origin	git@github.com:ghuiber/heywhatshere.git (push)
+Gabis-New-MacBook-Pro:heywhatshere ghuiber$ cd themes/minimal
+Gabis-New-MacBook-Pro:minimal ghuiber$ git remote -v
+origin	git@github.com:ghuiber/minimal.git (fetch)
+origin	git@github.com:ghuiber/minimal.git (push)
+upstream	https://github.com/calintat/minimal.git (fetch)
+upstream	https://github.com/calintat/minimal.git (push)
+Gabis-New-MacBook-Pro:minimal ghuiber$ cd ../../themes/ghostwriter
+Gabis-New-MacBook-Pro:ghostwriter ghuiber$ git remote -v
+origin	git@github.com:ghuiber/ghostwriter.git (fetch)
+origin	git@github.com:ghuiber/ghostwriter.git (push)
+upstream	https://github.com/jbub/ghostwriter.git (fetch)
+upstream	https://github.com/jbub/ghostwriter.git (push)
+</code></pre>
+
+<p>This ought to work. I already made the changes for MathJax and text highlighting described <a href="">here</a>, committed and pushed them. Next, I&rsquo;ll update the <code>config.toml</code> with my customized settings.</p>
 </div>
 
     
@@ -205,6 +230,9 @@
 
 
         
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 
     </body>
 

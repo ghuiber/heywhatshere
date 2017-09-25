@@ -128,6 +128,26 @@ $(document).ready(function () {
 <pre><code>diff config.toml themes/hugo-lithium-theme/exampleSite/config.toml</code></pre>
 <p>So if you’re going to experiment with different themes, it’s probably best to do it now before you go down too deep into modifying <code>config.toml</code> to suit your needs. The cleanest way to adopt new themes, it seems to me, is to follow the recipe from <a href="https://github.com/calintat/minimal">Minimal</a> everywhere: add each new theme as a Git submodule. This way you can update a theme easily as soon as the author tinkers with it. This works as shown for any theme that comes from GitHub, as far as I can tell. I used this recipe for <a href="https://github.com/jbub/ghostwriter">Ghostwriter</a> and <a href="https://github.com/mismith0227/hugo_theme_pickles">Pickles</a>.</p>
 <p>That this Git module business works doesn’t mean that the theme suits blogdown: Ghostwriter does, but Pickles does not. So, nevermind. You can remove a Git submodule using instructions <a href="https://stackoverflow.com/questions/1260748/how-do-i-remove-a-submodule">here</a>.</p>
+<div id="update-about-submodules" class="section level2">
+<h2>Update about submodules</h2>
+<p>My Ghostwriter and Minimal submodules came with https remotes set to their original GitHub repos. That’s not helpful if I’m going to make changes to them and I want those changes preserved somewhere, I don’t think. So, I forked first both of those repos, set the remote to my fork, and set the upstream to the original. Here’s the setup:</p>
+<pre><code>Gabis-New-MacBook-Pro:heywhatshere ghuiber$ git remote -v
+origin  git@github.com:ghuiber/heywhatshere.git (fetch)
+origin  git@github.com:ghuiber/heywhatshere.git (push)
+Gabis-New-MacBook-Pro:heywhatshere ghuiber$ cd themes/minimal
+Gabis-New-MacBook-Pro:minimal ghuiber$ git remote -v
+origin  git@github.com:ghuiber/minimal.git (fetch)
+origin  git@github.com:ghuiber/minimal.git (push)
+upstream    https://github.com/calintat/minimal.git (fetch)
+upstream    https://github.com/calintat/minimal.git (push)
+Gabis-New-MacBook-Pro:minimal ghuiber$ cd ../../themes/ghostwriter
+Gabis-New-MacBook-Pro:ghostwriter ghuiber$ git remote -v
+origin  git@github.com:ghuiber/ghostwriter.git (fetch)
+origin  git@github.com:ghuiber/ghostwriter.git (push)
+upstream    https://github.com/jbub/ghostwriter.git (fetch)
+upstream    https://github.com/jbub/ghostwriter.git (push)</code></pre>
+<p>This ought to work. I already made the changes for MathJax and text highlighting described [here]({{&lt; relref “2017-09-24-how-about-mathjax.Rmd” &gt;}}), committed and pushed them. Next, I’ll update the <code>config.toml</code> with my customized settings.</p>
+</div>
 
 
 
