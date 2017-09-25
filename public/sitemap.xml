@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/how-i-got-started-with-blogdown/</loc>
-    <lastmod>2017-09-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/how-about-mathjax/</loc>
     <lastmod>2017-09-24T00:00:00+00:00</lastmod>
   </url>
@@ -30,10 +25,6 @@
   <url>
     <loc>/post/2015-01-01-lorem-ipsum/</loc>
     <lastmod>2015-01-01T13:09:13-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2017-09-24-how-i-got-started-with-blogdown/</loc>
   </url>
   
   <url>

@@ -15,12 +15,7 @@ tags: []
 <pre><code>## here() starts at /Users/ghuiber/heywhatshere</code></pre>
 <pre class="r"><code>dir(file.path(here(), &#39;themes/hugo-lithium-theme/static/js&#39;))</code></pre>
 <pre><code>## [1] &quot;math-code.js&quot;</code></pre>
-<pre class="r"><code>dir(file.path(here(), &#39;themes/ghostwriter/static/js&#39;))</code></pre>
-<pre><code>## [1] &quot;jquery-1.11.3.min.js&quot; &quot;jquery.fitvids.js&quot;    &quot;math-code.js&quot;        
-## [4] &quot;scripts.js&quot;</code></pre>
-<pre class="r"><code>dir(file.path(here(), &#39;themes/minimal/static&#39;))</code></pre>
-<pre><code>## [1] &quot;css&quot; &quot;js&quot;</code></pre>
-<p>So, it seems like I could just copy this script to Ghostwriter’s <code>static/js</code> folder, and copy the whole <code>js</code> folder to Minimal’s <code>static</code> folder, like so (at the command line):</p>
+<p>I copied this script to Ghostwriter’s <code>static/js</code> folder, and I copied the whole <code>js</code> folder to Minimal’s <code>static</code> folder at the command line:</p>
 <pre><code>cp themes/hugo-lithium-theme/static/js/math-code.js themes/ghostwriter/static/js/
 cp -R themes/hugo-lithium-theme/static/js themes/minimal/static/</code></pre>
 <p>In addition, I’ll have to edit the other themes’ respective <code>config.toml</code> files with some extra parameters, so I will first make sure that the originals are preserved:</p>
@@ -67,8 +62,12 @@ cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_exam
       &lt;/header&gt;</code></pre>
 <p>So: the code in <code>head_highlightsjs.html</code> needs to make its way into the head section of <code>header.html</code> and the Lithium theme is doing this through an indirect call: <code>header.html</code> calls <code>head.html</code> which then calls <code>head_highlightjs.html</code>. OK.</p>
 </div>
-<div id="how-might-ghostwriter-do-it" class="section level2">
-<h2>How might Ghostwriter do it?</h2>
+<div id="how-about-the-other-two-templates" class="section level2">
+<h2>How about the other two templates?</h2>
+<p>Neither Minimal nor Ghostwriter have <code>footer_mathjax.html</code>, <code>footer_highlightjs.html</code> and <code>header_highlightjs.html</code> in the <code>partials</code> folder so I’ll start by copying them over in both places.</p>
+</div>
+<div id="how-might-ghostwriter-use-these-three-files" class="section level2">
+<h2>How might Ghostwriter use these three files?</h2>
 <p>The Ghostwriter theme handles calls to its own .js files from inside <code>footer.html</code>. Here’s the bottom of <code>themes/ghostwriter/layouts/partials/footer.html</code>:</p>
 <pre><code>        &lt;script src=&quot;{{ .Site.BaseURL }}js/scripts.js&quot;&gt;&lt;/script&gt;
     &lt;/body&gt;
@@ -79,12 +78,7 @@ cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_exam
         {{ partial &quot;footer_mathjax&quot; . }}
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p>And then</p>
-<ul>
-<li><code>cp themes/hugo-lithium-theme/layouts/partials/footer_mathjax.html themes/ghostwriter/layouts/partials/footer_mathjax.html</code> and</li>
-<li><code>cp themes/hugo-lithium-theme/layouts/partials/footer_highlightjs.html themes/ghostwriter/layouts/partials/footer_highlightjs.html</code></li>
-</ul>
-<p>I will <code>cp</code> the <code>head_highlightjs.html</code> partial into the Ghostwriter partials folder in the same way. I also need to make a call to it from Ghostwriter’s own <code>header.html</code> partial and make it inside the <code>&lt;head&gt;&lt;/head&gt;</code> tags. So here’s the relevant piece of <code>themes/ghostwriter/layouts/partials/header.html</code>:</p>
+<p>I also need to make a call to <code>header_highlightjs.html</code> from Ghostwriter’s own <code>header.html</code> partial and make it inside the <code>&lt;head&gt;&lt;/head&gt;</code> tags. So here’s the relevant piece of <code>themes/ghostwriter/layouts/partials/header.html</code>:</p>
 <pre><code>        {{ if .RSSLink }}
             &lt;link href=&quot;{{ .RSSLink }}&quot; rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot;&gt;
         {{ end }}
@@ -95,9 +89,28 @@ cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_exam
         {{ end }}
         {{ partial &quot;head_highlightjs&quot; . }}
     &lt;/head&gt;</code></pre>
-<p>This works, with the annoying issue that now I have these html files from one theme copied into a submodule. If the main theme is ever updated and these files change, I’ll have to remember to copy them over.</p>
 </div>
 <div id="how-about-minimal" class="section level2">
 <h2>How about Minimal?</h2>
-<p>The Minimal theme – which didn’t come with a <code>static/js</code> folder of its own – has a <code>js.html</code> file that calls some .js files from various locations on the internets. So, I could use the same procedure: copy over three partials, call two of them from the footer, one from the header. And, that worked!</p>
+<p>The Minimal theme – which didn’t come with a <code>static/js</code> folder of its own – has a <code>js.html</code> file that calls some .js files from various locations on the internets. So, I could use the same procedure: copy over three partials, call two of them from the footer, one from the header.</p>
+</div>
+<div id="submodules" class="section level2">
+<h2>Submodules</h2>
+<p>If you install extra themes such as Minimal and Ghostwriter as Git submodules following instructions <a href="https://github.com/ghuiber/minimal">here</a> their remotes will point to the originals. You will want instead to fork the originals, then make your remotes point to your forks, and set the originals as upstream repos. This way you can make any changes you want, push them to your own fork, and maintain them that way. There’s even an easy way to pull them all at once. It is described <a href="https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules">here</a>. If you screw anything up, you can discard all changes and pull from upstream as explained <a href="https://stackoverflow.com/questions/13781388/git-discard-all-changes-and-pull-from-upstream">here</a>.</p>
+<p>My remotes look like this:</p>
+<pre><code>Gabis-New-MacBook-Pro:heywhatshere ghuiber$ git remote -v
+origin  git@github.com:ghuiber/heywhatshere.git (fetch)
+origin  git@github.com:ghuiber/heywhatshere.git (push)
+Gabis-New-MacBook-Pro:heywhatshere ghuiber$ cd themes/ghostwriter/
+Gabis-New-MacBook-Pro:ghostwriter ghuiber$ git remote -v
+origin  git@github.com:ghuiber/ghostwriter.git (fetch)
+origin  git@github.com:ghuiber/ghostwriter.git (push)
+upstream    https://github.com/jbub/ghostwriter.git (fetch)
+upstream    https://github.com/jbub/ghostwriter.git (push)
+Gabis-New-MacBook-Pro:ghostwriter ghuiber$ cd ../minimal/
+Gabis-New-MacBook-Pro:minimal ghuiber$ git remote -v
+origin  git@github.com:ghuiber/minimal.git (fetch)
+origin  git@github.com:ghuiber/minimal.git (push)
+upstream    https://github.com/calintat/minimal.git (fetch)
+upstream    https://github.com/calintat/minimal.git (push)</code></pre>
 </div>
