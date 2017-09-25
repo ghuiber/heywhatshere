@@ -59,6 +59,13 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.27.1" />
         
+        
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
     </head>
 
     <body>
@@ -134,7 +141,7 @@
 </div>
 
 
-    <br> <div class="text-justify"><p>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – <span class="math inline">\(\Sigma\)</span> – will show like the Greek upper case Sigma if you have it and as dollar sign, backslash, Sigma, dollar sign if you don’t.</p>
+    <br> <div class="text-justify"><p>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – <span class="math inline">\(\Sigma\)</span> – will show like the Greek upper case Sigma if you have it.</p>
 <p>This seems driven by a script called <code>math-code.js</code> here:</p>
 <pre class="r"><code>library(&#39;here&#39;)</code></pre>
 <pre><code>## here() starts at /Users/ghuiber/heywhatshere</code></pre>
@@ -151,7 +158,8 @@ cp -R themes/hugo-lithium-theme/static/js themes/minimal/static/</code></pre>
 <p>In addition, I’ll have to edit the other themes’ respective <code>config.toml</code> files with some extra parameters, so I will first make sure that the originals are preserved:</p>
 <pre><code>cp themes/ghostwriter/exampleSite/config.toml themes/ghostwriter/exampleSite/config_example.toml
 cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_example.toml</code></pre>
-<p>Then I’ll copy over this section of the <code>[params]</code> block from the Lithium <code>config.toml</code> file to the <code>[params]</code> block in each of the other themes’ own <code>config.toml</code> file. If this screws anything up, I’ll just revert to the <code>config_example.toml</code> that I saved:</p>
+<p>Then I’ll copy over this section of the <code>[params]</code> block from the Lithium <code>config.toml</code> file to the <code>[params]</code> block in each of the other themes’ own <code>config.toml</code> file. Notice that this block handles both code highlighting and MathJax. Might as well take care of both in one fell swoop.</p>
+<p>If this screws anything up, I’ll just revert to the <code>config_example.toml</code> that I saved:</p>
 <pre><code>    # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = &quot;9.11.0&quot;
     highlightjsCDN = &quot;//cdn.bootcss.com&quot;
@@ -160,6 +168,71 @@ cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_exam
 
     MathJaxCDN = &quot;//cdn.bootcss.com&quot;
     MathJaxVersion = &quot;2.7.1&quot;</code></pre>
+<p>But we’re not done yet. In addition to the <code>math-code.js</code> script in the <code>static/js</code> folder and the parameters in <code>config.toml</code>, Hugo needs to see these pieces called from inside one of the html files in <code>layouts/partials</code>.</p>
+<div id="how-does-lithium-do-it" class="section level2">
+<h2>How does Lithium do it?</h2>
+<p>The Lithium theme has <code>footer_mathjax.html</code>, <code>footer_highlightjs.html</code> and <code>header_highlightjs.html</code> in the <code>partials</code> folder.</p>
+<p>Here’s the bottom of <code>themes/hugo-lithium-theme/layouts/partials/footer.html</code>:</p>
+<pre><code>    {{ partial &quot;footer_highlightjs&quot; . }}
+    {{ partial &quot;footer_mathjax&quot; . }}
+    {{ template &quot;_internal/google_analytics.html&quot; . }}
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>And here’s the bottom of <code>themes/hugo-lithium-theme/layouts/partials/head.html</code>:</p>
+<pre><code>{{ partial &quot;head_highlightjs&quot; . }}
+&lt;link rel=&quot;stylesheet&quot; href=&quot;{{ &quot;css/fonts.css&quot; | relURL }}&quot; media=&quot;all&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;{{ &quot;css/main.css&quot; | relURL }}&quot; media=&quot;all&quot;&gt;
+{{ range .Site.Params.customCSS }}
+&lt;link rel=&quot;stylesheet&quot; href=&quot;{{ . | relURL }}&quot;&gt;
+{{ end }}
+{{ partial &quot;head_custom&quot; . }}</code></pre>
+<p>This <code>head.html</code> file is called inside the <code>&lt;head&gt;&lt;/head&gt;</code> tags of <code>header.html</code> with a partial call. Here’s that file:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;{{ .Site.LanguageCode }}&quot;&gt;
+  &lt;head&gt;
+    {{ partial &quot;head.html&quot; . }}
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;wrapper&quot;&gt;
+      &lt;header class=&quot;header&quot;&gt;
+        {{ partial &quot;nav.html&quot; . }}
+      &lt;/header&gt;</code></pre>
+<p>So: the code in <code>head_highlightsjs.html</code> needs to make its way into the head section of <code>header.html</code> and the Lithium theme is doing this through an indirect call: <code>header.html</code> calls <code>head.html</code> which then calls <code>head_highlightjs.html</code>. OK.</p>
+</div>
+<div id="how-might-ghostwriter-do-it" class="section level2">
+<h2>How might Ghostwriter do it?</h2>
+<p>The Ghostwriter theme handles calls to its own .js files from inside <code>footer.html</code>. Here’s the bottom of <code>themes/ghostwriter/layouts/partials/footer.html</code>:</p>
+<pre><code>        &lt;script src=&quot;{{ .Site.BaseURL }}js/scripts.js&quot;&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>So I could replace the above with</p>
+<pre><code>        &lt;script src=&quot;{{ .Site.BaseURL }}js/scripts.js&quot;&gt;&lt;/script&gt;
+        {{ partial &quot;footer_highlightjs&quot; . }}
+        {{ partial &quot;footer_mathjax&quot; . }}
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>And then</p>
+<ul>
+<li><code>cp themes/hugo-lithium-theme/layouts/partials/footer_mathjax.html themes/ghostwriter/layouts/partials/footer_mathjax.html</code> and</li>
+<li><code>cp themes/hugo-lithium-theme/layouts/partials/footer_highlightjs.html themes/ghostwriter/layouts/partials/footer_highlightjs.html</code></li>
+</ul>
+<p>I will <code>cp</code> the <code>head_highlightjs.html</code> partial into the Ghostwriter partials folder in the same way. I also need to make a call to it from Ghostwriter’s own <code>header.html</code> partial and make it inside the <code>&lt;head&gt;&lt;/head&gt;</code> tags. So here’s the relevant piece of <code>themes/ghostwriter/layouts/partials/header.html</code>:</p>
+<pre><code>        {{ if .RSSLink }}
+            &lt;link href=&quot;{{ .RSSLink }}&quot; rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot;&gt;
+        {{ end }}
+    &lt;/head&gt;</code></pre>
+<p>And I’m going to change it to</p>
+<pre><code>        {{ if .RSSLink }}
+            &lt;link href=&quot;{{ .RSSLink }}&quot; rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot;&gt;
+        {{ end }}
+        {{ partial &quot;head_highlightjs&quot; . }}
+    &lt;/head&gt;</code></pre>
+<p>This works, with the annoying issue that now I have these html files from one theme copied into a submodule. If the main theme is ever updated and these files change, I’ll have to remember to copy them over.</p>
+</div>
+<div id="how-about-minimal" class="section level2">
+<h2>How about Minimal?</h2>
+<p>The Minimal theme – which didn’t come with a <code>static/js</code> folder of its own – has a <code>js.html</code> file that calls some .js files from various locations on the internets. So, I could use the same procedure: copy over three partials, call two of them from the footer, one from the header. And, that worked!</p>
+</div>
 </div>
 
     
@@ -201,6 +274,24 @@ cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_exam
             <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
 
         </footer>
+        
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+        
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 
     </body>
 

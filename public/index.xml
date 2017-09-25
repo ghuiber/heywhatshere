@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ghostwriter example</title>
+    <title>Minimal</title>
     <link>/</link>
-    <description>Recent content on Ghostwriter example</description>
+    <description>Recent content on Minimal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>My Name</copyright>
     <lastBuildDate>Sun, 24 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
@@ -14,31 +13,31 @@
     
     <item>
       <title>How I got started with blogdown</title>
-      <link>/2017/09/24/2017-09-24-how-i-got-started-with-blogdown/</link>
+      <link>/post/how-i-got-started-with-blogdown/</link>
       <pubDate>Sun, 24 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/09/24/2017-09-24-how-i-got-started-with-blogdown/</guid>
+      <guid>/post/how-i-got-started-with-blogdown/</guid>
       <description>The first thing to notice after you follow Yihui&amp;rsquo;s instructions from the beginning to section 1.2 is that the generic config.toml is the same as the one in exampleSite. You can do that in the Bash shell with diff, which returns nothing if the two files are identical:
 diff config.toml themes/hugo-lithium-theme/exampleSite/config.toml  So if you&amp;rsquo;re going to experiment with different themes, it&amp;rsquo;s probably best to do it now before you go down too deep into modifying config.</description>
     </item>
     
     <item>
       <title>How about MathJax?</title>
-      <link>/2017/09/24/2017-09-24-how-about-mathjax/</link>
+      <link>/post/how-about-mathjax/</link>
       <pubDate>Sun, 24 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/09/24/2017-09-24-how-about-mathjax/</guid>
-      <description>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – \(\Sigma\) – will show like the Greek upper case Sigma if you have it and as dollar sign, backslash, Sigma, dollar sign if you don’t.
+      <guid>/post/how-about-mathjax/</guid>
+      <description>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – \(\Sigma\) – will show like the Greek upper case Sigma if you have it.
 This seems driven by a script called math-code.js here:
-library(&amp;#39;here&amp;#39;) ## here() starts at /Users/ghuiber/heywhatshere dir(file.path(here(), &amp;#39;themes/hugo-lithium-theme/static/js&amp;#39;)) ## [1] &amp;quot;math-code.js&amp;quot; dir(file.path(here(), &amp;#39;themes/ghostwriter/static/js&amp;#39;)) ## [1] &amp;quot;jquery-1.11.3.min.js&amp;quot; &amp;quot;jquery.fitvids.js&amp;quot; &amp;quot;math-code.js&amp;quot; ## [4] &amp;quot;scripts.js&amp;quot; dir(file.</description>
+library(&amp;#39;here&amp;#39;) ## here() starts at /Users/ghuiber/heywhatshere dir(file.path(here(), &amp;#39;themes/hugo-lithium-theme/static/js&amp;#39;)) ## [1] &amp;quot;math-code.js&amp;quot; dir(file.path(here(), &amp;#39;themes/ghostwriter/static/js&amp;#39;)) ## [1] &amp;quot;jquery-1.11.3.min.js&amp;quot; &amp;quot;jquery.fitvids.js&amp;quot; &amp;quot;math-code.js&amp;quot; ## [4] &amp;quot;scripts.js&amp;quot; dir(file.path(here(), &amp;#39;themes/minimal/static&amp;#39;)) ## [1] &amp;quot;css&amp;quot; &amp;quot;js&amp;quot; So, it seems like I could just copy this script to Ghostwriter’s static/js folder, and copy the whole js folder to Minimal’s static folder, like so (at the command line):</description>
     </item>
     
     <item>
       <title>A Plain Markdown Post</title>
-      <link>/2016/12/30/2016-12-30-hello-markdown/</link>
+      <link>/post/2016-12-30-hello-markdown/</link>
       <pubDate>Fri, 30 Dec 2016 21:49:57 -0700</pubDate>
       
-      <guid>/2016/12/30/2016-12-30-hello-markdown/</guid>
+      <guid>/post/2016-12-30-hello-markdown/</guid>
       <description>This is a post written in plain Markdown (*.md) instead of R Markdown (*.Rmd). The major differences are:
  You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc.  There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
     </item>
@@ -54,10 +53,10 @@ library(&amp;#39;here&amp;#39;) ## here() starts at /Users/ghuiber/heywhatshere 
     
     <item>
       <title>Hello R Markdown</title>
-      <link>/2015/07/23/2015-07-23-r-rmarkdown/</link>
+      <link>/post/2015-07-23-r-rmarkdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>/2015/07/23/2015-07-23-r-rmarkdown/</guid>
+      <guid>/post/2015-07-23-r-rmarkdown/</guid>
       <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 You can embed an R code chunk like this:
 summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
@@ -65,19 +64,19 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     
     <item>
       <title>Lorem Ipsum</title>
-      <link>/2015/01/01/2015-01-01-lorem-ipsum/</link>
+      <link>/post/2015-01-01-lorem-ipsum/</link>
       <pubDate>Thu, 01 Jan 2015 13:09:13 -0600</pubDate>
       
-      <guid>/2015/01/01/2015-01-01-lorem-ipsum/</guid>
+      <guid>/post/2015-01-01-lorem-ipsum/</guid>
       <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     
     <item>
       <title></title>
-      <link>/1/01/01/2017-09-24-how-i-got-started-with-blogdown/</link>
+      <link>/post/2017-09-24-how-i-got-started-with-blogdown/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/1/01/01/2017-09-24-how-i-got-started-with-blogdown/</guid>
+      <guid>/post/2017-09-24-how-i-got-started-with-blogdown/</guid>
       <description>How I got started with blogdown       code{white-space: pre;} pre:not([class]) { background-color: white; }  if (window.hljs &amp;&amp; document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) { window.setTimeout(function() { hljs.initHighlighting(); }, 0); }  h1 { font-size: 34px; } h1.title { font-size: 38px; } h2 { font-size: 30px; } h3 { font-size: 24px; } h4 { font-size: 18px; } h5 { font-size: 16px; } h6 { font-size: 12px; } .</description>
     </item>
     

@@ -1,35 +1,18 @@
-baseurl = "https://example.com/"
-title = "Ghostwriter example"
-theme = "ghostwriter"
+baseURL = "http://example.com/"
 languageCode = "en-us"
-copyright = "My Name"
-disqusShortname = "XXX"
-googleAnalytics = "XXX"
+title = "Minimal"
+theme = "minimal"
+disqusShortname = "username" # delete this to disable disqus comments
 
-[Author]
-    name = "My Name"
-    profile = "https://google.com/+XXX"
-
-[Taxonomies]
-    tag = "tags"
-
-[Params]
-    intro = true
-    headline = "Ghostwriter example"
-    description = "Ghostwriter example description"
-    github = "https://github.com/XXX"
-    gitlab = "https://gitlab.com/XXX"
-    linkedin = "https://linkedin.com/in/XXX/"
-    gplus = "https://google.com/+XXX"
-    twitter = "https://twitter.com/XXX"
-    stackoverflow = "https://stackoverflow.com/users/XXX/YYY"
-    email = "XXX@example.com"
-    opengraph = true
-    shareTwitter = true
-    shareFacebook = true
-    shareGooglePlus = true
-    shareLinkedIn = false
-    dateFormat = "Mon, Jan 2, 2006"
+[params]
+    author = "Calin Tataru"
+    description = "Personal blog theme powered by Hugo"
+    githubUsername = "#"
+    accent = "red"
+    showBorder = true
+    backgroundColor = "white"
+    font = "Raleway" # should match the name on Google Fonts!
+    highlight = true
     
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
@@ -40,25 +23,46 @@ googleAnalytics = "XXX"
     MathJaxCDN = "//cdn.bootcss.com"
     MathJaxVersion = "2.7.1"
 
-[Permalinks]
-    post = "/:year/:month/:day/:filename/"
-
 [[menu.main]]
-    name = "Blog"
     url = "/"
+    name = "Home"
     weight = 1
 
 [[menu.main]]
-    name = "Projects"
-    url = "/project/"
+    url = "/post/"
+    name = "Posts"
     weight = 2
 
 [[menu.main]]
-    name = "Contact"
-    url = "/page/contact/"
+    url = "/project/"
+    name = "Projects"
     weight = 3
 
-[[menu.main]]
-    name = "About"
-    url = "/page/about/"
+# Social icons to be shown on the right-hand side of the navigation bar
+# The "name" field should match the name of the icon to be used
+# The list of available icons can be found at http://fontawesome.io/icons/
+
+[[menu.icon]]
+    url = "mailto:me@example.com"
+    name = "envelope-o"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://github.com/username/"
+    name = "github"
+    weight = 2
+
+[[menu.icon]]
+    url = "https://twitter.com/username/"
+    name = "twitter"
+    weight = 3
+
+[[menu.icon]]
+    url = "https://www.linkedin.com/in/username/"
+    name = "linkedin"
     weight = 4
+
+[[menu.icon]]
+    url = "https://www.stackoverflow.com/username/"
+    name = "stack-overflow"
+    weight = 5
