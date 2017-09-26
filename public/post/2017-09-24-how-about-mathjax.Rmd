@@ -30,7 +30,7 @@ cp themes/ghostwriter/exampleSite/config.toml themes/ghostwriter/exampleSite/con
 cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_example.toml
 ```
 
-Then I'll copy over this section of the `[params]` block from the Lithium `config.toml` file to the `[params]` block in each of the other themes' own `config.toml` file. Notice that this block handles both code highlighting and MathJax. Might as well take care of both in one fell swoop.
+Then I'll copy over this section of the `[params]` block from the Lithium `config.toml` file to the `[params]` block in each of the other themes' own `config.toml` file. Notice that this block handles both code highlighting and MathJax. If what I'm trying to do here works, we'll take care of both.
 
 If this screws anything up, I'll just revert to the `config_example.toml` that I saved:
 

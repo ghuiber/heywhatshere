@@ -147,7 +147,7 @@ cp -R themes/hugo-lithium-theme/static/js themes/minimal/static/</code></pre>
 <p>In addition, I’ll have to edit the other themes’ respective <code>config.toml</code> files with some extra parameters, so I will first make sure that the originals are preserved:</p>
 <pre><code>cp themes/ghostwriter/exampleSite/config.toml themes/ghostwriter/exampleSite/config_example.toml
 cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_example.toml</code></pre>
-<p>Then I’ll copy over this section of the <code>[params]</code> block from the Lithium <code>config.toml</code> file to the <code>[params]</code> block in each of the other themes’ own <code>config.toml</code> file. Notice that this block handles both code highlighting and MathJax. Might as well take care of both in one fell swoop.</p>
+<p>Then I’ll copy over this section of the <code>[params]</code> block from the Lithium <code>config.toml</code> file to the <code>[params]</code> block in each of the other themes’ own <code>config.toml</code> file. Notice that this block handles both code highlighting and MathJax. If what I’m trying to do here works, we’ll take care of both.</p>
 <p>If this screws anything up, I’ll just revert to the <code>config_example.toml</code> that I saved:</p>
 <pre><code>    # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = &quot;9.11.0&quot;

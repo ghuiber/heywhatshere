@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Minimal</title>
+    <title>Hey, what&#39;s here?</title>
     <link>/</link>
-    <description>Recent content on Minimal</description>
+    <description>Recent content on Hey, what&#39;s here?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>This is an experiment. I use R and RStudio for data analysis at work and around the house. When one day I figured that it would be nice if I could use them for blogging too, it didn&amp;rsquo;t take too long to find the blogdown package. Then it occurred to me that it would be nice if I had some specific topic too. San Francisco, where I live now, has an open data portal as one would expect.</description>
+    </item>
+    
+    <item>
       <title>How about MathJax?</title>
-      <link>/post/how-about-mathjax/</link>
+      <link>/2017/09/24/how-about-mathjax/</link>
       <pubDate>Sun, 24 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/how-about-mathjax/</guid>
+      <guid>/2017/09/24/how-about-mathjax/</guid>
       <description>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – \(\Sigma\) – will show like the Greek upper case Sigma if you have it.
-This seems driven by a script called math-code.js here:
-library(&amp;#39;here&amp;#39;) ## here() starts at /Users/ghuiber/heywhatshere dir(file.path(here(), &amp;#39;themes/hugo-lithium-theme/static/js&amp;#39;)) ## [1] &amp;quot;math-code.js&amp;quot; I copied this script to Ghostwriter’s static/js folder, and I copied the whole js folder to Minimal’s static folder at the command line:</description>
+This theme is very nice but if you want to use another, two good candidates are Minimal and Ghostwriter. To make them useful for occasional mathematics typesetting, you will want to enable MathJax support there too.
+Submodules If you install extra themes such as Minimal and Ghostwriter as Git submodules following instructions here their remotes will point to the originals.</description>
     </item>
     
     <item>
       <title>A Plain Markdown Post</title>
-      <link>/post/2016-12-30-hello-markdown/</link>
+      <link>/2016/12/30/a-plain-markdown-post/</link>
       <pubDate>Fri, 30 Dec 2016 21:49:57 -0700</pubDate>
       
-      <guid>/post/2016-12-30-hello-markdown/</guid>
+      <guid>/2016/12/30/a-plain-markdown-post/</guid>
       <description>This is a post written in plain Markdown (*.md) instead of R Markdown (*.Rmd). The major differences are:
  You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc.  There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
     </item>
     
     <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
-      
-      <guid>/about/</guid>
-      <description>This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
-    </item>
-    
-    <item>
       <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <link>/2015/07/23/hello-r-markdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <guid>/2015/07/23/hello-r-markdown/</guid>
       <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 You can embed an R code chunk like this:
 summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
@@ -54,10 +54,10 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     
     <item>
       <title>Lorem Ipsum</title>
-      <link>/post/2015-01-01-lorem-ipsum/</link>
+      <link>/2015/01/01/lorem-ipsum/</link>
       <pubDate>Thu, 01 Jan 2015 13:09:13 -0600</pubDate>
       
-      <guid>/post/2015-01-01-lorem-ipsum/</guid>
+      <guid>/2015/01/01/lorem-ipsum/</guid>
       <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     
