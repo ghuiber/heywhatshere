@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Hey, what&#39;s here?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Open data with RSocrata</title>
+      <link>/2017/09/25/open-data-with-rsocrata/</link>
+      <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/09/25/open-data-with-rsocrata/</guid>
+      <description>San Francisco has an open data site built with Socrata. There’s an RSocrata package on CRAN, so it should be easy enough to analyze this data in R.
+Here’s an attempt:
+# load useful libs first library(&amp;#39;RSocrata&amp;#39;) library(&amp;#39;tidyverse&amp;#39;) library(&amp;#39;lubridate&amp;#39;) library(&amp;#39;survival&amp;#39;) library(&amp;#39;survminer&amp;#39;) # bring remote json into local tibble biz_locations &amp;lt;- read.socrata(url = &amp;#39;https://data.sfgov.org/resource/vbiu-2p9h.json&amp;#39;) %&amp;gt;% as_tibble() Let’s track business survival over time.
+# I want SF only and unique certificate-numbers # with dba start and end dates since 1999 plotthese &amp;lt;- biz_locations %&amp;gt;% filter(city %in% c(&amp;#39;San Francisco&amp;#39;, &amp;#39;San+francisco&amp;#39;)) %&amp;gt;% select(certificate_number, business_zip, dba_start_date, dba_end_date) %&amp;gt;% unique() %&amp;gt;% filter(year(dba_start_date) &amp;gt;= 1999) %&amp;gt;% mutate(closed = !</description>
+    </item>
     
     <item>
       <title>How about MathJax?</title>

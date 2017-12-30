@@ -1,3 +1,5 @@
+.DS*
+*/.DS*
 .Rproj.user
 .Rhistory
 *.Rproj
