@@ -1,10 +1,8 @@
 ---
-title: Open data with RSocrata
+title: Bad open data
 author: Gabi Huiber
-date: '2017-09-25'
-slug: open-data-with-rsocrata
-categories: []
-tags: []
+date: '2017-12-29'
+slug: bad-open-data
 ---
 
 San Francisco has an [open data site](https://datasf.org/) built with [Socrata](https://dev.socrata.com/). There's an [RSocrata](https://cran.r-project.org/web/packages/RSocrata/index.html) package on CRAN, so it should be easy enough to analyze this data in R.
@@ -143,7 +141,7 @@ totes <- list(close = closepair,
 
 It is hard to believe that of the businesses registered in `r farpair[1]` a smaller share is now closed than of the businesses registered in `r farpair[2]`. Even if we expect poorer overall survival as the mix of businesses registered in San Francisco is increasingly weighted toward tech startups as time goes on, would this effect would more than offset the sheer size of the cumulative risk of closure faced by older enterprises? And yet that is what we see:
 
-```{r showClosedShare}
+```{r showClosedShare, echo = FALSE}
 totes$far %>% 
   knitr::kable(col.names = c('Year registered', 
                              'Still open', 
@@ -153,9 +151,9 @@ totes$far %>%
                format.args = list(big.mark = ','))
 ```
 
-The most dramatic way to illustrate survivor bias is simply to tally the closures in the first 5 years from the year of registration by cohort:
+But the most dramatic way to illustrate survivor bias may be the simplest. Here is a tally of the closures in the first 5 years on record, counting from the year of registration by cohort:
 
-```{r tallyFirstYears}
+```{r tallyFirstYears, echo = FALSE}
 tallies$far %>% 
   group_by(year) %>% 
   arrange(year, end_year) %>% 

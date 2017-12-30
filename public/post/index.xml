@@ -6,17 +6,17 @@
     <description>Recent content in Posts on Hey, what&#39;s here?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 Dec 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Open data with RSocrata</title>
-      <link>/2017/09/25/open-data-with-rsocrata/</link>
-      <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
+      <title>Bad open data</title>
+      <link>/2017/12/29/bad-open-data/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/09/25/open-data-with-rsocrata/</guid>
+      <guid>/2017/12/29/bad-open-data/</guid>
       <description>San Francisco has an open data site built with Socrata. There’s an RSocrata package on CRAN, so it should be easy enough to analyze this data in R.
 Here’s an attempt:
 # load useful libs first library(&amp;#39;RSocrata&amp;#39;) library(&amp;#39;tidyverse&amp;#39;) library(&amp;#39;lubridate&amp;#39;) library(&amp;#39;survival&amp;#39;) library(&amp;#39;survminer&amp;#39;) # bring remote json into local tibble biz_locations &amp;lt;- read.socrata(url = &amp;#39;https://data.sfgov.org/resource/vbiu-2p9h.json&amp;#39;) %&amp;gt;% as_tibble() Let’s track business survival over time.
