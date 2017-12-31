@@ -71,9 +71,9 @@
     
 
     <div class="article-content">
-      <p>If you install a theme as a Git submodule as shown <a href="https://github.com/calintat/minimal">here</a> and deploy your site on Netlify with the &ldquo;New site from Git&rdquo; button, Netlify may protest that it cannot find the remote repo for your theme. This is because it does not have access to it.</p>
+      <p>If you install a theme as a Git submodule as shown here, your Netlify deploy with the “New site from Git” button may fail. This happens when Netlify does not have access to the original repo for your theme.</p>
 
-<p>Forking the original repo and pointing your remote to your fork as the origin, like I did, won&rsquo;t be enough of a fix, either. You will want to take a look at the <code>.gitmodules</code> file and update the url you see there. In my case, this means that when my first deploy failed I had to change this:</p>
+<p>My solution was to update the url in the <code>.gitmodules</code> file. After my first deploy failed I changed this:</p>
 
 <pre><code>[submodule &quot;themes/minimal&quot;]
   path = themes/minimal

@@ -17,8 +17,10 @@
       <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/12/31/hugo-themes-and-netlify/</guid>
-      <description>If you install a theme as a Git submodule as shown here and deploy your site on Netlify with the &amp;ldquo;New site from Git&amp;rdquo; button, Netlify may protest that it cannot find the remote repo for your theme. This is because it does not have access to it.
-Forking the original repo and pointing your remote to your fork as the origin, like I did, won&amp;rsquo;t be enough of a fix, either.</description>
+      <description>If you install a theme as a Git submodule as shown here, your Netlify deploy with the “New site from Git” button may fail. This happens when Netlify does not have access to the original repo for your theme.
+My solution was to update the url in the .gitmodules file. After my first deploy failed I changed this:
+[submodule &amp;quot;themes/minimal&amp;quot;] path = themes/minimal url = https://github.com/calintat/minimal.git  To this:
+[submodule &amp;quot;themes/minimal&amp;quot;] path = themes/minimal url = https://github.</description>
     </item>
     
     <item>
