@@ -29,7 +29,7 @@ Here’s an attempt:
       <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>This is an experiment. I use R and RStudio for data analysis at work and around the house. I thought it would be nice if I could use them for blogging too, and it didn&amp;rsquo;t take too long to find the blogdown package. Then it occurred to me that it would be nice if I had some specific topic too. San Francisco, where I live now, has an open data portal as one would expect.</description>
+      <description>This is an experiment. I use R and RStudio for data analysis at work and around the house. I thought it would be nice if I could use them for blogging too, and it didn&amp;rsquo;t take too long to find the blogdown package.</description>
     </item>
     
     <item>
@@ -71,15 +71,6 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       
       <guid>/2015/01/01/lorem-ipsum/</guid>
       <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/</guid>
-      <description>Content in Markdown</description>
     </item>
     
   </channel>
