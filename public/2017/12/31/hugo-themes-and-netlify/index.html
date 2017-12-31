@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.31.1" />
+
+
+<title>Hugo themes and Netlify - Hey, what&#39;s here?</title>
+<meta property="og:title" content="Hugo themes and Netlify - Hey, what&#39;s here?">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/mugshot.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ghuiber/heywhatshere">GitHub</a></li>
+    
+    <li><a href="https://stackoverflow.com/users/255155/gabi">StackOverflow</a></li>
+    
+    <li><a href="https://twitter.com/ghuiber">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">Hugo themes and Netlify</h1>
+
+    
+    <span class="article-date">2017/12/31</span>
+    
+
+    <div class="article-content">
+      <p>If you install a theme as a Git submodule as shown <a href="https://github.com/calintat/minimal">here</a> and deploy your site on Netlify with the &ldquo;New site from Git&rdquo; button, Netlify may protest that it cannot find the remote repo for your theme. This is because it does not have access to it.</p>
+
+<p>Forking the original repo and pointing your remote to your fork as the origin, like I did, won&rsquo;t be enough of a fix, either. You will want to take a look at the <code>.gitmodules</code> file and update the url you see there. In my case, this means that when my first deploy failed I had to change this:</p>
+
+<pre><code>[submodule &quot;themes/minimal&quot;]
+  path = themes/minimal
+  url = https://github.com/calintat/minimal.git 
+</code></pre>
+
+<p>To this:</p>
+
+<pre><code>[submodule &quot;themes/minimal&quot;]
+  path = themes/minimal
+  url = https://github.com/ghuiber/minimal.git 
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
