@@ -4,3 +4,6 @@
 [submodule "themes/ghostwriter"]
 	path = themes/ghostwriter
 	url = https://github.com/ghuiber/ghostwriter.git
+[submodule "themes/hugo-tea"]
+	path = themes/hugo-tea
+	url = https://github.com/ghuiber/hugo-tea.git

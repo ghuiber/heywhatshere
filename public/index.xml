@@ -12,15 +12,14 @@
     
     
     <item>
-      <title>Hugo themes and Netlify</title>
-      <link>/2017/12/31/hugo-themes-and-netlify/</link>
+      <title>Hugo themes as Git submodules</title>
+      <link>/2017/12/31/hugo-themes-as-git-submodules/</link>
       <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/12/31/hugo-themes-and-netlify/</guid>
-      <description>If you install a theme as a Git submodule as shown here, your Netlify deploy with the “New site from Git” button may fail. This happens when Netlify does not have access to the original repo for your theme.
-My solution was to update the url in the .gitmodules file. After my first deploy failed I changed this:
-[submodule &amp;quot;themes/minimal&amp;quot;] path = themes/minimal url = https://github.com/calintat/minimal.git  To this:
-[submodule &amp;quot;themes/minimal&amp;quot;] path = themes/minimal url = https://github.</description>
+      <guid>/2017/12/31/hugo-themes-as-git-submodules/</guid>
+      <description>Submodules If you install extra themes &amp;ndash; such as Minimal &amp;ndash; as Git submodules following instructions here their remotes will point to the originals. You will want instead to fork the originals, then install your forks as submodules. In other words, replace the first line of the original instructions from this:
+$ git submodule add https://github.com/calintat/minimal.git themes/minimal  to this:
+$ git submodule add https://github.com/&amp;lt;YOUR_GITHUB_ID&amp;gt;/minimal.git themes/minimal  This command, in the background, will write your .</description>
     </item>
     
     <item>
@@ -52,7 +51,7 @@ Here’s an attempt:
       <guid>/2017/09/24/how-about-mathjax/</guid>
       <description>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – \(\Sigma\) – will show like the Greek upper case Sigma if you have it.
 This theme is very nice but if you want to use another, two good candidates are Minimal and Ghostwriter. To make them useful for occasional mathematics typesetting, you will want to enable MathJax support there too.
-Submodules If you install extra themes such as Minimal and Ghostwriter as Git submodules following instructions here their remotes will point to the originals.</description>
+The Lithium theme comes with a script called math-code.</description>
     </item>
     
     <item>
@@ -83,15 +82,6 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       
       <guid>/2015/01/01/lorem-ipsum/</guid>
       <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/1/01/01/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/1/01/01/</guid>
-      <description>Hugo themes and Netlify       code{white-space: pre;} pre:not([class]) { background-color: white; }  if (window.hljs) { hljs.configure({languages: []}); hljs.initHighlightingOnLoad(); if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) { window.setTimeout(function() { hljs.initHighlighting(); }, 0); } }  h1 { font-size: 34px; } h1.title { font-size: 38px; } h2 { font-size: 30px; } h3 { font-size: 24px; } h4 { font-size: 18px; } h5 { font-size: 16px; } h6 { font-size: 12px; } .</description>
     </item>
     
   </channel>

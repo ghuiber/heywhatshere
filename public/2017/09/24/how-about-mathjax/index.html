@@ -73,28 +73,6 @@
     <div class="article-content">
       <p>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – <span class="math inline">\(\Sigma\)</span> – will show like the Greek upper case Sigma if you have it.</p>
 <p>This theme is very nice but if you want to use another, two good candidates are <a href="https://github.com/calintat/minimal">Minimal</a> and <a href="https://github.com/jbub/ghostwriter">Ghostwriter</a>. To make them useful for occasional mathematics typesetting, you will want to enable MathJax support there too.</p>
-<div id="submodules" class="section level2">
-<h2>Submodules</h2>
-<p>If you install extra themes such as Minimal and Ghostwriter as Git submodules following instructions <a href="https://github.com/calintat/minimal">here</a> their remotes will point to the originals. You will want instead to fork the originals, then make your remotes point to your forks, and set the originals as upstream repos. This way you can make any changes you want, push them to your own fork, and maintain them that way. There’s even an easy way to pull them all at once. It is described <a href="https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules">here</a>. If you screw anything up, you can discard all changes and pull from upstream as explained <a href="https://stackoverflow.com/questions/13781388/git-discard-all-changes-and-pull-from-upstream">here</a>.</p>
-<p>My remotes look like this:</p>
-<pre><code>Gabis-New-MacBook-Pro:heywhatshere ghuiber$ git remote -v
-origin  git@github.com:ghuiber/heywhatshere.git (fetch)
-origin  git@github.com:ghuiber/heywhatshere.git (push)
-Gabis-New-MacBook-Pro:heywhatshere ghuiber$ cd themes/ghostwriter/
-Gabis-New-MacBook-Pro:ghostwriter ghuiber$ git remote -v
-origin  git@github.com:ghuiber/ghostwriter.git (fetch)
-origin  git@github.com:ghuiber/ghostwriter.git (push)
-upstream    https://github.com/jbub/ghostwriter.git (fetch)
-upstream    https://github.com/jbub/ghostwriter.git (push)
-Gabis-New-MacBook-Pro:ghostwriter ghuiber$ cd ../minimal/
-Gabis-New-MacBook-Pro:minimal ghuiber$ git remote -v
-origin  git@github.com:ghuiber/minimal.git (fetch)
-origin  git@github.com:ghuiber/minimal.git (push)
-upstream    https://github.com/calintat/minimal.git (fetch)
-upstream    https://github.com/calintat/minimal.git (push)</code></pre>
-</div>
-<div id="back-to-mathjax" class="section level2">
-<h2>Back to MathJax</h2>
 <p>The Lithium theme comes with a script called <code>math-code.js</code> here:</p>
 <pre class="r"><code>library(&#39;here&#39;)</code></pre>
 <pre><code>## here() starts at /Users/ghuiber/heywhatshere</code></pre>
@@ -116,7 +94,6 @@ cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_exam
     MathJaxCDN = &quot;//cdn.bootcss.com&quot;
     MathJaxVersion = &quot;2.7.1&quot;</code></pre>
 <p>In addition to the <code>math-code.js</code> script in the <code>static/js</code> folder and the parameters in <code>config.toml</code>, Hugo needs to see these pieces called from inside one of the html files in <code>layouts/partials</code>.</p>
-</div>
 <div id="how-does-lithium-do-it" class="section level2">
 <h2>How does Lithium do it?</h2>
 <p>The Lithium theme has <code>footer_mathjax.html</code>, <code>footer_highlightjs.html</code> and <code>header_highlightjs.html</code> in the <code>partials</code> folder.</p>
