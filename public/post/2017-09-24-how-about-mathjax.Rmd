@@ -9,7 +9,9 @@ tags: []
 
 The default Lithium theme in blogdown comes with MathJax support. This big Sigma here -- $\Sigma$ -- will show like the Greek upper case Sigma if you have it.
 
-This seems driven by a script called `math-code.js` here:
+This theme is very nice but if you want to use another, two good candidates are [Minimal](https://github.com/calintat/minimal) and [Ghostwriter](https://github.com/jbub/ghostwriter). To make them useful for occasional mathematics typesetting, you will want to enable MathJax support there too.
+
+The Lithium theme comes with a script called `math-code.js` here:
 
 ```{r showMathCode}
 library('here')
@@ -23,16 +25,14 @@ cp themes/hugo-lithium-theme/static/js/math-code.js themes/ghostwriter/static/js
 cp -R themes/hugo-lithium-theme/static/js themes/minimal/static/
 ```
 
-In addition, I'll have to edit the other themes' respective `config.toml` files with some extra parameters, so I will first make sure that the originals are preserved:
+I had to edit the other themes' respective `config.toml` files with some extra parameters, so I  first made sure to preserve the originals:
 
 ```
 cp themes/ghostwriter/exampleSite/config.toml themes/ghostwriter/exampleSite/config_example.toml
 cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_example.toml
 ```
 
-Then I'll copy over this section of the `[params]` block from the Lithium `config.toml` file to the `[params]` block in each of the other themes' own `config.toml` file. Notice that this block handles both code highlighting and MathJax. If what I'm trying to do here works, we'll take care of both.
-
-If this screws anything up, I'll just revert to the `config_example.toml` that I saved:
+Then I copied over this section of the `[params]` block from the Lithium `config.toml` file to the `[params]` block in each of the other themes' own `config.toml` file. Notice that this block handles both code highlighting and MathJax. I want to take care of both at once. If this screws anything up, I'll just revert to the `config_example.toml` that I saved:
 
 ```
     # options for highlight.js (version, additional languages, and theme)
@@ -45,7 +45,7 @@ If this screws anything up, I'll just revert to the `config_example.toml` that I
     MathJaxVersion = "2.7.1"
 ```
 
-But we're not done yet. In addition to the `math-code.js` script in the `static/js` folder and the parameters in `config.toml`, Hugo needs to see these pieces called from inside one of the html files in `layouts/partials`. 
+In addition to the `math-code.js` script in the `static/js` folder and the parameters in `config.toml`, Hugo needs to see these pieces called from inside one of the html files in `layouts/partials`. 
 
 ## How does Lithium do it?
 
@@ -137,26 +137,6 @@ And I'm going to change it to
 
 The Minimal theme -- which didn't come with a `static/js` folder of its own -- has a `js.html` file that calls some .js files from various locations on the internets. So, I could use the same procedure: copy over three partials, call two of them from the footer, one from the header. 
 
-## Submodules
+## Conclusion
 
-If you install extra themes such as Minimal and Ghostwriter as Git submodules following instructions [here](https://github.com/ghuiber/minimal) their remotes will point to the originals. You will want instead to fork the originals, then make your remotes point to your forks, and set the originals as upstream repos. This way you can make any changes you want, push them to your own fork, and maintain them that way. There's even an easy way to pull them all at once. It is described [here](https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules). If you screw anything up, you can discard all changes and pull from upstream as explained [here](https://stackoverflow.com/questions/13781388/git-discard-all-changes-and-pull-from-upstream).
-
-My remotes look like this:
-
-```
-Gabis-New-MacBook-Pro:heywhatshere ghuiber$ git remote -v
-origin	git@github.com:ghuiber/heywhatshere.git (fetch)
-origin	git@github.com:ghuiber/heywhatshere.git (push)
-Gabis-New-MacBook-Pro:heywhatshere ghuiber$ cd themes/ghostwriter/
-Gabis-New-MacBook-Pro:ghostwriter ghuiber$ git remote -v
-origin	git@github.com:ghuiber/ghostwriter.git (fetch)
-origin	git@github.com:ghuiber/ghostwriter.git (push)
-upstream	https://github.com/jbub/ghostwriter.git (fetch)
-upstream	https://github.com/jbub/ghostwriter.git (push)
-Gabis-New-MacBook-Pro:ghostwriter ghuiber$ cd ../minimal/
-Gabis-New-MacBook-Pro:minimal ghuiber$ git remote -v
-origin	git@github.com:ghuiber/minimal.git (fetch)
-origin	git@github.com:ghuiber/minimal.git (push)
-upstream	https://github.com/calintat/minimal.git (fetch)
-upstream	https://github.com/calintat/minimal.git (push)
-```
+This worked: with these modifications both Minimal and Ghostwriter have MathJax enabled. This will do for an exploration of other themes. I decided to keep Lithium.

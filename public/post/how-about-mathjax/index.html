@@ -4,13 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>How about MathJax?</title>
-        
-
-
-<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
-
-
-
         <style>
 
     html body {
@@ -35,7 +28,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
 
-
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -43,7 +36,14 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
  
-        
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
 
 
 
@@ -57,9 +57,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- 
-        <meta name="generator" content="Hugo 0.27.1" />
-        
+ <meta name="generator" content="Hugo 0.122.0">
     </head>
 
     <body>
@@ -135,8 +133,12 @@
 </div>
 
 
-    <br> <div class="text-justify"><p>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – <span class="math inline">\(\Sigma\)</span> – will show like the Greek upper case Sigma if you have it.</p>
-<p>This seems driven by a script called <code>math-code.js</code> here:</p>
+    <br> <div class="text-justify">
+
+
+<p>The default Lithium theme in blogdown comes with MathJax support. This big Sigma here – <span class="math inline">\(\Sigma\)</span> – will show like the Greek upper case Sigma if you have it.</p>
+<p>This theme is very nice but if you want to use another, two good candidates are <a href="https://github.com/calintat/minimal">Minimal</a> and <a href="https://github.com/jbub/ghostwriter">Ghostwriter</a>. To make them useful for occasional mathematics typesetting, you will want to enable MathJax support there too.</p>
+<p>The Lithium theme comes with a script called <code>math-code.js</code> here:</p>
 <pre class="r"><code>library(&#39;here&#39;)</code></pre>
 <pre><code>## here() starts at /Users/ghuiber/heywhatshere</code></pre>
 <pre class="r"><code>dir(file.path(here(), &#39;themes/hugo-lithium-theme/static/js&#39;))</code></pre>
@@ -144,11 +146,10 @@
 <p>I copied this script to Ghostwriter’s <code>static/js</code> folder, and I copied the whole <code>js</code> folder to Minimal’s <code>static</code> folder at the command line:</p>
 <pre><code>cp themes/hugo-lithium-theme/static/js/math-code.js themes/ghostwriter/static/js/
 cp -R themes/hugo-lithium-theme/static/js themes/minimal/static/</code></pre>
-<p>In addition, I’ll have to edit the other themes’ respective <code>config.toml</code> files with some extra parameters, so I will first make sure that the originals are preserved:</p>
+<p>I had to edit the other themes’ respective <code>config.toml</code> files with some extra parameters, so I first made sure to preserve the originals:</p>
 <pre><code>cp themes/ghostwriter/exampleSite/config.toml themes/ghostwriter/exampleSite/config_example.toml
 cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_example.toml</code></pre>
-<p>Then I’ll copy over this section of the <code>[params]</code> block from the Lithium <code>config.toml</code> file to the <code>[params]</code> block in each of the other themes’ own <code>config.toml</code> file. Notice that this block handles both code highlighting and MathJax. If what I’m trying to do here works, we’ll take care of both.</p>
-<p>If this screws anything up, I’ll just revert to the <code>config_example.toml</code> that I saved:</p>
+<p>Then I copied over this section of the <code>[params]</code> block from the Lithium <code>config.toml</code> file to the <code>[params]</code> block in each of the other themes’ own <code>config.toml</code> file. Notice that this block handles both code highlighting and MathJax. I want to take care of both at once. If this screws anything up, I’ll just revert to the <code>config_example.toml</code> that I saved:</p>
 <pre><code>    # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = &quot;9.11.0&quot;
     highlightjsCDN = &quot;//cdn.bootcss.com&quot;
@@ -157,7 +158,7 @@ cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_exam
 
     MathJaxCDN = &quot;//cdn.bootcss.com&quot;
     MathJaxVersion = &quot;2.7.1&quot;</code></pre>
-<p>But we’re not done yet. In addition to the <code>math-code.js</code> script in the <code>static/js</code> folder and the parameters in <code>config.toml</code>, Hugo needs to see these pieces called from inside one of the html files in <code>layouts/partials</code>.</p>
+<p>In addition to the <code>math-code.js</code> script in the <code>static/js</code> folder and the parameters in <code>config.toml</code>, Hugo needs to see these pieces called from inside one of the html files in <code>layouts/partials</code>.</p>
 <div id="how-does-lithium-do-it" class="section level2">
 <h2>How does Lithium do it?</h2>
 <p>The Lithium theme has <code>footer_mathjax.html</code>, <code>footer_highlightjs.html</code> and <code>header_highlightjs.html</code> in the <code>partials</code> folder.</p>
@@ -220,25 +221,9 @@ cp themes/minimal/exampleSite/config.toml themes/minimal/exampleSite/config_exam
 <h2>How about Minimal?</h2>
 <p>The Minimal theme – which didn’t come with a <code>static/js</code> folder of its own – has a <code>js.html</code> file that calls some .js files from various locations on the internets. So, I could use the same procedure: copy over three partials, call two of them from the footer, one from the header.</p>
 </div>
-<div id="submodules" class="section level2">
-<h2>Submodules</h2>
-<p>If you install extra themes such as Minimal and Ghostwriter as Git submodules following instructions <a href="https://github.com/ghuiber/minimal">here</a> their remotes will point to the originals. You will want instead to fork the originals, then make your remotes point to your forks, and set the originals as upstream repos. This way you can make any changes you want, push them to your own fork, and maintain them that way. There’s even an easy way to pull them all at once. It is described <a href="https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules">here</a>. If you screw anything up, you can discard all changes and pull from upstream as explained <a href="https://stackoverflow.com/questions/13781388/git-discard-all-changes-and-pull-from-upstream">here</a>.</p>
-<p>My remotes look like this:</p>
-<pre><code>Gabis-New-MacBook-Pro:heywhatshere ghuiber$ git remote -v
-origin  git@github.com:ghuiber/heywhatshere.git (fetch)
-origin  git@github.com:ghuiber/heywhatshere.git (push)
-Gabis-New-MacBook-Pro:heywhatshere ghuiber$ cd themes/ghostwriter/
-Gabis-New-MacBook-Pro:ghostwriter ghuiber$ git remote -v
-origin  git@github.com:ghuiber/ghostwriter.git (fetch)
-origin  git@github.com:ghuiber/ghostwriter.git (push)
-upstream    https://github.com/jbub/ghostwriter.git (fetch)
-upstream    https://github.com/jbub/ghostwriter.git (push)
-Gabis-New-MacBook-Pro:ghostwriter ghuiber$ cd ../minimal/
-Gabis-New-MacBook-Pro:minimal ghuiber$ git remote -v
-origin  git@github.com:ghuiber/minimal.git (fetch)
-origin  git@github.com:ghuiber/minimal.git (push)
-upstream    https://github.com/calintat/minimal.git (fetch)
-upstream    https://github.com/calintat/minimal.git (push)</code></pre>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>This worked: with these modifications both Minimal and Ghostwriter have MathJax enabled. This will do for an exploration of other themes. I decided to keep Lithium.</p>
 </div>
 </div>
 
@@ -246,31 +231,6 @@ upstream    https://github.com/calintat/minimal.git (push)</code></pre>
     
 
     
-
-    
-
-        <h4 class="page-header">Comments</h4>
-
-        <div id="disqus_thread"></div>
-<script>
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "username" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
     
 
@@ -278,27 +238,9 @@ upstream    https://github.com/calintat/minimal.git (push)</code></pre>
 
         <footer>
 
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
 
         </footer>
-        
-
-
-
-<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
-
-
-
-<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
-<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
-<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
-
-
-
-        
-<script src="/js/math-code.js"></script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 
     </body>
 

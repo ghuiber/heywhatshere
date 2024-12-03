@@ -1,30 +1,11 @@
-baseurl = "/"
+baseURL = "http://example.com/"
 languageCode = "en-us"
 title = "Hey, what's here?"
-theme = "hugo-lithium-theme"
-googleAnalytics = ""
-disqusShortname = ""
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+theme = "minimal"
 disableHugoGeneratorInject = true
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
-
-[[menu.main]]
-    name = "About"
-    url = "/about/"
-
-[[menu.main]]
-    name = "GitHub"
-    url = "https://github.com/ghuiber/heywhatshere"
-    
-[[menu.main]]
-    name = "Twitter"
-    url = "https://twitter.com/ghuiber"
-    
-[[menu.main]]
-    name = "StackOverflow" 
-    url = "https://stackoverflow.com/users/255155/gabi"
 
 [params]
     description = "Notes to self about things I pick up for a closer look."
@@ -45,6 +26,39 @@ disableHugoGeneratorInject = true
     height = ""
     alt = "Logo"
 
+[[menu.main]]
+    url = "/"
+    name = "Home"
+    weight = 1
+
+[[menu.main]]
+    url = "/post/"
+    name = "Posts"
+    weight = 2
+
+# Social icons to be shown on the right-hand side of the navigation bar
+# The "name" field should match the name of the icon to be used
+# The list of available icons can be found at http://fontawesome.io/icons/
+
+[[menu.icon]]
+    url = "mailto:ghuiber@gmail.com"
+    name = "envelope-o"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://github.com/ghuiber/"
+    name = "github"
+    weight = 2
+
+[[menu.icon]]
+    url = "https://www.linkedin.com/in/ghuiber/"
+    name = "linkedin"
+    weight = 3
+
+[[menu.icon]]
+    url = "https://stackoverflow.com/users/255155/gabi"
+    name = "stack-overflow"
+    weight = 4
 
 [markup]
   [markup.goldmark]
