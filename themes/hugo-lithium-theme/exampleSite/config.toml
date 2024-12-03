@@ -1,10 +1,11 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "A Hugo website"
+title = "Hey, what's here?"
 theme = "hugo-lithium-theme"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+disableHugoGeneratorInject = true
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
@@ -12,15 +13,21 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [[menu.main]]
     name = "About"
     url = "/about/"
+
 [[menu.main]]
     name = "GitHub"
-    url = "https://github.com/rstudio/blogdown"
+    url = "https://github.com/ghuiber/heywhatshere"
+    
 [[menu.main]]
     name = "Twitter"
-    url = "https://twitter.com/rstudio"
+    url = "https://twitter.com/ghuiber"
+    
+[[menu.main]]
+    name = "StackOverflow" 
+    url = "https://stackoverflow.com/users/255155/gabi"
 
 [params]
-    description = "A website built through Hugo and blogdown."
+    description = "Notes to self about things I pick up for a closer look."
 
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
@@ -32,8 +39,14 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     MathJaxVersion = "2.7.1"
 
     [params.logo]
-    url = "logo.png"
+    url = "mugshot.png"
+    rss = ""
     width = 50
-    height = 50
+    height = ""
     alt = "Logo"
 
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

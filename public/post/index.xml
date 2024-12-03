@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Hey, what&#39;s here?</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Posts on Hey, what&#39;s here?</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Dec 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 31 Dec 2017 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo themes as Git submodules</title>
       <link>/2017/12/31/hugo-themes-as-git-submodules/</link>
@@ -18,8 +14,8 @@
       
       <guid>/2017/12/31/hugo-themes-as-git-submodules/</guid>
       <description>Submodules If you install extra themes &amp;ndash; such as Minimal &amp;ndash; as Git submodules following instructions here their remotes will point to the originals. You will want instead to fork the originals, then install your forks as submodules. In other words, replace the first line of the original instructions from this:
-$ git submodule add https://github.com/calintat/minimal.git themes/minimal  to this:
-$ git submodule add https://github.com/&amp;lt;YOUR_GITHUB_ID&amp;gt;/minimal.git themes/minimal  This command, in the background, will write your .</description>
+$ git submodule add https://github.com/calintat/minimal.git themes/minimal to this:
+$ git submodule add https://github.com/&amp;lt;YOUR_GITHUB_ID&amp;gt;/minimal.git themes/minimal This command, in the background, will write your .</description>
     </item>
     
     <item>

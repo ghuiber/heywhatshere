@@ -5,6 +5,7 @@ theme = "hugo-lithium-theme"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+disableHugoGeneratorInject = true
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
@@ -39,7 +40,13 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
     [params.logo]
     url = "mugshot.png"
+    rss = ""
     width = 50
-    height = 50
+    height = ""
     alt = "Logo"
 
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

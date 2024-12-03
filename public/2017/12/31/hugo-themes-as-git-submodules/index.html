@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.31.1" />
+<meta name="generator" content="Hugo 0.83.1" />
 
 
 <title>Hugo themes as Git submodules - Hey, what&#39;s here?</title>
@@ -37,7 +37,7 @@
   <a href="/" class="nav-logo">
     <img src="/images/mugshot.png"
          width="50"
-         height="50"
+         height=""
          alt="Logo">
   </a>
 
@@ -71,40 +71,22 @@
     
 
     <div class="article-content">
-      
-
-<h2 id="submodules">Submodules</h2>
-
+      <h2 id="submodules">Submodules</h2>
 <p>If you install extra themes &ndash; such as Minimal &ndash; as Git submodules following instructions <a href="https://github.com/calintat/minimal">here</a> their remotes will point to the originals. You will want instead to fork the originals, then install <em>your forks</em> as submodules. In other words, replace the first line of the original instructions from this:</p>
-
 <pre><code>$ git submodule add https://github.com/calintat/minimal.git themes/minimal
-</code></pre>
-
-<p>to this:</p>
-
+</code></pre><p>to this:</p>
 <pre><code>$ git submodule add https://github.com/&lt;YOUR_GITHUB_ID&gt;/minimal.git themes/minimal
-</code></pre>
-
-<p>This command, in the background, will write your <code>.gitmodules</code> entries accordingly. Instead of this (1):</p>
-
+</code></pre><p>This command, in the background, will write your <code>.gitmodules</code> entries accordingly. Instead of this (1):</p>
 <pre><code>[submodule &quot;themes/minimal&quot;]
   path = themes/minimal
   url = https://github.com/calintat/minimal.git 
-</code></pre>
-
-<p>you will see this (2):</p>
-
+</code></pre><p>you will see this (2):</p>
 <pre><code>[submodule &quot;themes/minimal&quot;]
   path = themes/minimal
   url = https://github.com/&lt;YOUR_GITHUB_ID&gt;/minimal.git 
-</code></pre>
-
-<p>This change will be useful to Netlify later.</p>
-
+</code></pre><p>This change will be useful to Netlify later.</p>
 <p>Next, you will also want to set the original repos as <code>upstream</code> remotes. You can now make any changes you want, push them to your own fork, and maintain them that way. There&rsquo;s even an easy way to pull them all at once. It is described <a href="https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules">here</a>. If you screw anything up, you can discard all changes and pull afresh from upstream as explained <a href="https://stackoverflow.com/questions/13781388/git-discard-all-changes-and-pull-from-upstream">here</a>.</p>
-
 <p>My own remotes look like this:</p>
-
 <pre><code>Gabis-New-MacBook-Pro:heywhatshere ghuiber$ git remote -v
 origin	git@github.com:ghuiber/heywhatshere.git (fetch)
 origin	git@github.com:ghuiber/heywhatshere.git (push)
@@ -120,11 +102,8 @@ origin	git@github.com:ghuiber/minimal.git (fetch)
 origin	git@github.com:ghuiber/minimal.git (push)
 upstream	https://github.com/calintat/minimal.git (fetch)
 upstream	https://github.com/calintat/minimal.git (push)
-</code></pre>
-
-<h2 id="netlify">Netlify</h2>
-
-<p>If you log into Netlify with your GitHub credentials and deploy your Hugo blog with the “New site from Git” button, all should go without a hitch. What prompted this post is that my first deploy failed because I had followed to the letter the instructions for adding a submodule. Though I forked the original repos and I changed the remotes &ndash; <code>origin</code> and <code>upstream</code> &ndash; as shown above, the changes did not carry over to the <code>.gitmodules</code> entries, which pointed to the original authors&rsquo; repos as shown in (1). This left Netlify with the impression that it did not have access to my <code>origin</code> remote repos. My immediate solution was to change the <code>.gitmodules</code> entries by hand. This did fix the deploy problem, but the easy solution is to fork first, then change what you put after <code>git submodule add</code> accordingly. That will write the corresponding <code>.gitmodules</code> entry correctly in the first place and Netlify will deploy without complaints.</p>
+</code></pre><h2 id="netlify">Netlify</h2>
+<p>If you log into Netlify with your GitHub credentials and deploy your Hugo blog with the “New site from Git” button, all should go without a hitch. What prompted this post is that my first deploy failed because I had followed to the letter the instructions for adding a submodule. Though I forked the original repos and I changed the remotes &ndash; <code>origin</code> and <code>upstream</code> &ndash; as shown above, the changes did not carry over to the <code>.gitmodules</code> entries, which pointed to the original authors' repos as shown in (1). This left Netlify with the impression that it did not have access to my <code>origin</code> remote repos. My immediate solution was to change the <code>.gitmodules</code> entries by hand. This did fix the deploy problem, but the easy solution is to fork first, then change what you put after <code>git submodule add</code> accordingly. That will write the corresponding <code>.gitmodules</code> entry correctly in the first place and Netlify will deploy without complaints.</p>
 
     </div>
   </article>
