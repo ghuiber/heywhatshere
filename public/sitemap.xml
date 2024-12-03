@@ -1,50 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>http://example.com/</loc>
-    <lastmod>2017-12-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.com/2017/12/31/hugo-themes-as-git-submodules/</loc>
-    <lastmod>2017-12-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.com/post/</loc>
-    <lastmod>2017-12-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.com/2017/12/29/bad-open-data/</loc>
-    <lastmod>2017-12-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.com/about/</loc>
-    <lastmod>2017-09-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.com/2017/09/24/how-about-mathjax/</loc>
-    <lastmod>2017-09-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://example.com/2016/12/30/a-plain-markdown-post/</loc>
-    <lastmod>2016-12-30T21:49:57-07:00</lastmod>
-  </url><url>
-    <loc>http://example.com/categories/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>http://example.com/2015/07/23/hello-r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>http://example.com/tags/plot/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>http://example.com/categories/r/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>http://example.com/tags/r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>http://example.com/tags/regression/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>http://example.com/tags/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>http://example.com/2015/01/01/lorem-ipsum/</loc>
-    <lastmod>2015-01-01T13:09:13-06:00</lastmod>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>//localhost:4321/en/sitemap.xml</loc>
+    
+      <lastmod>2017-12-31T00:00:00+00:00</lastmod>
+    
+  </sitemap>
+  
+</sitemapindex>
