@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hugo themes as Git submodules</title>
+        <style>
+
+    html body {
+        font-family: Raleway, sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.122.0">
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Hugo themes as Git submodules</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/project/">Projects</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:me@example.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/username/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/username/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/username/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/username/"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/hugo-themes-as-git-submodules/">Hugo themes as Git submodules</a></h4>
+    <h5>December 31, 2017</h5>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><h2 id="submodules">Submodules</h2>
+<p>If you install extra themes &ndash; such as Minimal &ndash; as Git submodules following instructions <a href="https://github.com/calintat/minimal">here</a> their remotes will point to the originals. You will want instead to fork the originals, then install <em>your forks</em> as submodules. In other words, replace the first line of the original instructions from this:</p>
+<pre tabindex="0"><code>$ git submodule add https://github.com/calintat/minimal.git themes/minimal
+</code></pre><p>to this:</p>
+<pre tabindex="0"><code>$ git submodule add https://github.com/&lt;YOUR_GITHUB_ID&gt;/minimal.git themes/minimal
+</code></pre><p>This command, in the background, will write your <code>.gitmodules</code> entries accordingly. Instead of this (1):</p>
+<pre tabindex="0"><code>[submodule &#34;themes/minimal&#34;]
+  path = themes/minimal
+  url = https://github.com/calintat/minimal.git 
+</code></pre><p>you will see this (2):</p>
+<pre tabindex="0"><code>[submodule &#34;themes/minimal&#34;]
+  path = themes/minimal
+  url = https://github.com/&lt;YOUR_GITHUB_ID&gt;/minimal.git 
+</code></pre><p>This change will be useful to Netlify later.</p>
+<p>Next, you will also want to set the original repos as <code>upstream</code> remotes. You can now make any changes you want, push them to your own fork, and maintain them that way. There&rsquo;s even an easy way to pull them all at once. It is described <a href="https://stackoverflow.com/questions/1030169/easy-way-to-pull-latest-of-all-git-submodules">here</a>. If you screw anything up, you can discard all changes and pull afresh from upstream as explained <a href="https://stackoverflow.com/questions/13781388/git-discard-all-changes-and-pull-from-upstream">here</a>.</p>
+<p>My own remotes look like this:</p>
+<pre tabindex="0"><code>Gabis-New-MacBook-Pro:heywhatshere ghuiber$ git remote -v
+origin	git@github.com:ghuiber/heywhatshere.git (fetch)
+origin	git@github.com:ghuiber/heywhatshere.git (push)
+Gabis-New-MacBook-Pro:heywhatshere ghuiber$ cd themes/ghostwriter/
+Gabis-New-MacBook-Pro:ghostwriter ghuiber$ git remote -v
+origin	git@github.com:ghuiber/ghostwriter.git (fetch)
+origin	git@github.com:ghuiber/ghostwriter.git (push)
+upstream	https://github.com/jbub/ghostwriter.git (fetch)
+upstream	https://github.com/jbub/ghostwriter.git (push)
+Gabis-New-MacBook-Pro:ghostwriter ghuiber$ cd ../minimal/
+Gabis-New-MacBook-Pro:minimal ghuiber$ git remote -v
+origin	git@github.com:ghuiber/minimal.git (fetch)
+origin	git@github.com:ghuiber/minimal.git (push)
+upstream	https://github.com/calintat/minimal.git (fetch)
+upstream	https://github.com/calintat/minimal.git (push)
+</code></pre><h2 id="netlify">Netlify</h2>
+<p>If you log into Netlify with your GitHub credentials and deploy your Hugo blog with the “New site from Git” button, all should go without a hitch. What prompted this post is that my first deploy failed because I had followed to the letter the instructions for adding a submodule. Though I forked the original repos and I changed the remotes &ndash; <code>origin</code> and <code>upstream</code> &ndash; as shown above, the changes did not carry over to the <code>.gitmodules</code> entries, which pointed to the original authors&rsquo; repos as shown in (1). This left Netlify with the impression that it did not have access to my <code>origin</code> remote repos. My immediate solution was to change the <code>.gitmodules</code> entries by hand. This did fix the deploy problem, but the easy solution is to fork first, then change what you put after <code>git submodule add</code> accordingly. That will write the corresponding <code>.gitmodules</code> entry correctly in the first place and Netlify will deploy without complaints.</p>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+
+    </body>
+
+</html>
+

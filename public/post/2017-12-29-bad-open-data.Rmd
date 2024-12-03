@@ -1,0 +1,167 @@
+---
+title: Bad open data
+author: Gabi Huiber
+date: '2017-12-29'
+slug: bad-open-data
+---
+
+San Francisco has an [open data site](https://datasf.org/) built with [Socrata](https://dev.socrata.com/). There's an [RSocrata](https://cran.r-project.org/web/packages/RSocrata/index.html) package on CRAN, so it should be easy enough to analyze this data in R.
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)
+```
+
+Here's an attempt:
+
+```{r showSFRegisteredBiz}
+# load useful libs first
+library('RSocrata')
+library('tidyverse')
+library('lubridate')
+library('survival')
+library('survminer')
+# bring remote json into local tibble
+biz_locations <- read.socrata(url = 'https://data.sfgov.org/resource/vbiu-2p9h.json') %>% 
+  as_tibble()
+```
+
+Let's track business survival over time.
+
+```{r showBizSurvivalSF}
+# I want SF only and unique certificate-numbers 
+# with dba start and end dates since 1999
+plotthese <- biz_locations %>% 
+  filter(city %in% 
+           c('San Francisco', 'San+francisco')) %>% 
+  select(certificate_number, 
+         business_zip, 
+         dba_start_date, 
+         dba_end_date) %>% 
+  unique() %>%   
+  filter(year(dba_start_date) >= 1999) %>% 
+  mutate(closed = !is.na(dba_end_date)) %>% 
+  mutate(dba_end_date = if_else(closed == FALSE, 
+                                Sys.Date() %>% 
+                                  as_datetime(), 
+                                dba_end_date)) %>% 
+  mutate(year = year(dba_start_date))
+# My models
+formulas <- list(null_model = Surv(time = difftime(dba_end_date, 
+                                                   dba_start_date, 
+                                                   units = 'weeks'), 
+                                   closed) ~ 1L,
+                 by_year = Surv(time = difftime(dba_end_date, 
+                                                dba_start_date, 
+                                                units = 'weeks'), 
+                                closed) ~ I(year))
+fitset <- surv_fit(formulas, 
+                   data = plotthese,
+                   conf = 'log-log')
+plotset <- fitset %>% 
+  map(ggsurvplot)
+```
+
+There's something wrong with this SF business registration data. It makes no sense that older cohorts should have such robust survival profiles, with hardly any of the businesses registered in 
+1999 closing down over their first 10 years in existence:
+
+```{r showFunnySurvival}
+plotset$`plotthese::by_year` + 
+  ggtitle('Survival profile by registration year')
+```
+
+It seems like we have a selection problem. The farther we go into the past, the more the data set is biased toward businesses that have longer survival. 
+
+Maybe older businesses that failed at earlier times were simply ignored. The masthead says that this data set is maintained by the Office of the Treasurer-Tax Collector [here](https://data.sfgov.org/Economy-and-Community/Registered-Business-Locations-San-Francisco/g8m3-pdis/data). It's possible that defunct businesses are gradually erased from the tax rolls as a routine matter of record-keeping hygiene. That's unfortunate for our purposes.
+
+Let's take a closer look at a smaller example anyway, see if we can find some simple piece of evidence in favor of this bias through data-cleaning theory. 
+
+First, we'll select two years that are close together and recent, but not too recent. We want them recent because if older data are incomplete and biased to favor businesses with better survival, more recent years should be less affected; and we don't want them too recent because we want to see some meaningful length of the uncensored segment of the survival curve.
+
+Next, we'll select two years that are far apart, so one will have to be fairly recent. It will suffer from censoring over most of the length of the observed curve, but the previous pair will have given us an idea of what to expect the survival curve to look like. 
+
+```{r showASmallerExample}
+# take two years close together and with
+# a few years of history trailing them
+closepair <- c(2015, 2016)
+# and take two years fairly far apart
+farpair   <- c(2000, 2012)
+# now compare the survival plots by year
+foo <- list(close = closepair, 
+            far = farpair) %>% 
+  map(function(x) 
+    plotthese %>% 
+      filter(year %in% x)) %>% 
+  map(surv_fit, 
+      formula = formulas$by_year, 
+      conf = 'log-log')
+survminerplots <- foo %>% 
+  map(ggsurvplot, 
+      risk.table = TRUE)
+survminerplots$close + 
+  ggtitle('Believable survival curves')
+survminerplots$far + 
+  ggtitle('Survivor bias in older cohort')
+```
+
+The above gave us more information than we strictly need. A quicker way to show this survivor bias in older firms is a simple tally.
+
+```{r showCloseTally, message = FALSE}
+# older firms have better survival than newer ones.
+# difference hard to see in close-together years,
+# not so in far-apart years
+# tally closures by year, by cohort of birth
+tallies <- list(close = closepair, 
+                far = farpair) %>% 
+  map(function(x) 
+    plotthese %>% 
+      filter(year %in% x)) %>% 
+  map(function(x) 
+    x %>% 
+      mutate(end_year = year(dba_end_date)) %>% 
+      filter(closed == TRUE) %>% 
+      group_by(year, end_year) %>% 
+      tally())
+# tabulate closed vs still open by cohort of birth
+totes <- list(close = closepair, 
+                far = farpair) %>% 
+  map(function(x) 
+    plotthese %>% 
+      filter(year %in% x)) %>% 
+  map(function(x) 
+    x %>% 
+      group_by(year, closed) %>% 
+      tally()) %>% 
+  map(function(x) 
+    x %>% 
+      tidyr::spread(n, key = closed) %>% 
+      mutate(share_closed = `TRUE`/(`TRUE`+`FALSE`)))
+```
+
+It is hard to believe that of the businesses registered in `r farpair[1]` a smaller share is now closed than of the businesses registered in `r farpair[2]`. Even if we expect poorer overall survival as the mix of businesses registered in San Francisco is increasingly weighted toward tech startups as time goes on, would this effect would more than offset the sheer size of the cumulative risk of closure faced by older enterprises? And yet that is what we see:
+
+```{r showClosedShare, echo = FALSE}
+totes$far %>% 
+  knitr::kable(col.names = c('Year registered', 
+                             'Still open', 
+                             'Now closed', 
+                             'Share of closed'), 
+               digits = 2, 
+               format.args = list(big.mark = ','))
+```
+
+But the most dramatic way to illustrate survivor bias may be the simplest. Here is a tally of the closures in the first 5 years on record, counting from the year of registration by cohort:
+
+```{r tallyFirstYears, echo = FALSE}
+tallies$far %>% 
+  group_by(year) %>% 
+  arrange(year, end_year) %>% 
+  filter(row_number() <= 5) %>% 
+  knitr::kable(col.names = c('Year of registration', 
+                             'Year of closure', 
+                             'Businesses closed'), 
+               digits = 2)
+```
+
+It is even harder to believe that none of the businesses registered in 2000 closed in 2001, 2003, or 2005, and as far out as 2007 the closures in this cohort are in the single digits per year. This data set is incomplete.
