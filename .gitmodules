@@ -7,3 +7,6 @@
 [submodule "themes/hugo-tea"]
 	path = themes/hugo-tea
 	url = https://github.com/ghuiber/hugo-tea.git
+[submodule "themes/hugo-theme-yue"]
+	path = themes/hugo-theme-yue
+	url = https://github.com/ghuiber/hugo-theme-yue.git
